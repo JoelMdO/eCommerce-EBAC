@@ -1,100 +1,61 @@
-body {
-  width: 100%;
-  font-size: 15px;
-  font-weight: 300;
-  color: #000;
-  font-family: "Lexend", sans-serif;
-  margin: 0;
-}
-
-
 header {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 20dvh;
   padding: 20px 50px;
   background-color: #333;
   justify-content: space-between;
   box-sizing: border-box;
 }
-header .header-icon__menu,
-header .header-icon__carrito {
+header header .header-icon__menu,
+header header .header-icon__carrito {
   width: 50px;
   cursor: pointer;
   display: inline-flexbox;
 }
-header .header-icon__menu--img,
-header .header-icon__carrito--img {
-  width: 100%;
+header header .heder-logo {
+  height: 20px;
 }
-header .header-logo {
-  width: 100px;
-}
-header .header-icon__carrito-button {
+header header .header-icon__carrito-button {
   background: none;
   border: none;
   padding: 0;
   margin: 0;
   cursor: pointer;
-  position: relative;
 }
-header .header-icon__carrito-button.active {
-  border: 2px solid #ff0000 !important;
-}
-header .cart-count {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: #ff0000;
-  color: #fff;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
+header header .header-icon__carrito-button .active {
+  border: 1px solid #ed0e0e;
 }
 
 .banner {
-  display: flex;
   width: 100%;
-  height: 20dvh;
+  height: 70%;
+  padding: 40px 0;
   text-align: center;
-  flex-direction: column;
   background-image: url("../assets/banner.jpg");
   opacity: 0.8;
   background-size: cover;
   background-position-x: 75%;
 }
-.banner h2 {
+
+.banner .banner h2 {
   width: 100%;
   font-size: 30px;
   font-weight: 600;
   color: #fff;
-  margin: 0;
-  border: 0;
-  color: rgb(10, 88, 234);
+  margin: 10px;
 }
-.banner p {
+
+.banner .banner p {
   width: 100%;
   /*change from 350px to 100% make it be along all the screen as rect line*/
-  margin: 0;
+  margin: 0 auto;
   font-size: 25px;
   opacity: 0.8;
   color: #000;
 }
 
-@media (max-width: 674px) {
-  .banner h2 {
-    font-size: 25px;
-  }
-  .banner p {
-    font-size: 20px;
-  }
-}
 .products {
   width: 80%;
   /*cambiar de 1100px a 80% hace que sea responsive y el grid view se ajuste*/
@@ -108,36 +69,26 @@ header .cart-count {
   /*1fr es un valor flexible proporcional a la pantalla*/
   color: #000;
 }
-.products article {
+
+.products .products article {
   cursor: pointer;
   text-align: center;
 }
-.products img {
+
+.products .products img {
   width: 200px;
   margin-bottom: 15px;
 }
-.products h3 {
+
+.products .products h3 {
   font-weight: 500;
   font-size: 17px;
   margin-bottom: 5px;
 }
-.products p {
+
+.products .products p {
   font-weight: 300;
   font-size: 15px;
-}
-.products button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: #e8b408;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 50;
-}
-.products .cart-product_add.active {
-  background-color: #83e808;
 }
 
 .cart {
@@ -149,8 +100,6 @@ header .cart-count {
   height: 50dvh;
   position: fixed;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   /*para que se quede fija, es necesario right and top*/
   right: 5vw;
   /*para que no se vea*/
@@ -168,58 +117,40 @@ header .cart-count {
   display: flex;
   align-items: center;
   flex-direction: row;
+  grid-template-columns: 20px auto;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #000;
   text-align: center;
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 25px 0;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 }
-.cart-product img {
-  width: 80px;
-  height: 80px;
-}
-.cart-product button {
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-}
-.cart-product p {
-  font-size: 1.3em;
-  font-weight: 800;
-  margin: 0;
-  padding: 0;
-}
-.cart-product p:nth-child(2) {
-  font-weight: 600;
-  /*selecciona el segundo p(nth-child 2) de la clase cart en el div, para que sea negrita*/
-}
-.cart-product i {
-  cursor: pointer;
-}
-.cart-product .delete-icon {
+
+.cart-product .cart-product img {
   width: 30px;
   height: 30px;
 }
-.cart-product__info {
+
+.cart-product .cart-product p:nth-child(2) {
+  font-weight: 800;
+  /*selecciona el segundo p(nth-child 2) de la clase cart en el div, para que sea negrita*/
+}
+
+.cart-product .cart-product i {
+  cursor: pointer;
+}
+
+.cart-product .cart-product .delete-icon {
+  width: 10px;
+}
+
+.cart-product .cart-product__info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-@media (max-width: 500px) {
-  .cart-product img {
-    width: 50px;
-    height: 50px;
-  }
-  .cart-product p {
-    font-size: 0.8em;
-  }
-  .cart-product .delete-icon {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=main.css.map */

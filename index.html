@@ -23,80 +23,138 @@
           alt="Icon Menu"
       /></i>
       <img class="header-logo" src="assets/adidas.png" alt="Logo Adidas" />
+      <!-- Carrito -->
       <i class="header-icon__carrito"
-        ><img
-          class="header-icon__carrito--img"
-          src="assets/cart.png"
-          alt="Icono de carrito"
-      /></i>
+        ><button type="button" class="header-icon__carrito-button">
+          <img
+            class="header-icon__carrito--img"
+            src="assets/cart.png"
+            alt="Icono de carrito"
+          />
+          <span id="cartCount" class="cart-count">0</span>
+        </button></i
+      >
     </header>
     <!--uso de main, section, article are the new divs in html5-->
     <main>
       <section class="banner">
         <h2>Productos Nuevos</h2>
-        <p>Conoce nuestros productos nuevos</p>
+        <p>Conocelos</p>
       </section>
       <section class="products">
         <article>
-          <img src="assets/jersey.png" alt="jersey" />
-          <h3>Jersey Mexico 2023</h3>
-          <p>$1,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/jersey.png"
+            alt="jersey"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Jersey Mexico 2023</h3>
+          <p class="cart-product__price">$1,000.00</p>
         </article>
         <article>
-          <img src="assets/jacket.png" alt="jacket" />
-          <h3>Chamarra Adidas</h3>
-          <p>$2,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/jacket.png"
+            alt="jacket"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Chamarra Adidas</h3>
+          <p class="cart-product__price">$2,000.00</p>
         </article>
         <article>
-          <img src="assets/Adidas Shoes.png" alt="Shoes" />
-          <h3>Adidas LG2</h3>
-          <p>$1,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/Adidas Shoes.png"
+            alt="Shoes"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Adidas LG2</h3>
+          <p class="cart-product__price">$1,000.00</p>
         </article>
         <article>
-          <img src="assets/jersey.png" alt="jersey" />
-          <h3>Jersey Mexico 2023</h3>
-          <p>$1,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/jersey.png"
+            alt="jersey"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Jersey Mexico 2023</h3>
+          <p class="cart-product__price">$1,000.00</p>
         </article>
         <article>
-          <img src="assets/jacket.png" alt="jacket" />
-          <h3>Chamarra Adidas</h3>
-          <p>$2,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/jacket.png"
+            alt="jacket"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Chamarra Adidas</h3>
+          <p class="cart-product__price">$2,000.00</p>
         </article>
         <article>
-          <img src="assets/Adidas Shoes.png" alt="Shoes" />
-          <h3>Adidas LG2</h3>
-          <p>$1,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/Adidas Shoes.png"
+            alt="Shoes"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Adidas LG2</h3>
+          <p class="cart-product__price">$1,000.00</p>
         </article>
         <article>
-          <img src="assets/jersey.png" alt="jersey" />
-          <h3>Jersey Mexico 2023</h3>
-          <p>$1,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/jersey.png"
+            alt="jersey"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Jersey Mexico 2023</h3>
+          <p class="cart-product__price">$1,000.00</p>
         </article>
         <article>
-          <img src="assets/jacket.png" alt="jacket" />
-          <h3>Chamarra Adidas</h3>
-          <p>$2,000.00</p>
+          <img
+            class="cart-product__image"
+            src="assets/jacket.png"
+            alt="jacket"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Chamarra Adidas</h3>
+          <p class="cart-product__price">$2,000.00</p>
         </article>
         <article>
-          <img src="assets/Adidas Shoes.png" alt="Shoes" />
-          <h3>Adidas LG2</h3>
-          <p>$1,000.00</p>
+          <img
+            id="cart-product__image"
+            src="assets/Adidas Shoes.png"
+            alt="Shoes"
+          />
+          <button type="button" class="cart-product_add">
+            <span class="cart-product__add-text">+</span>
+          </button>
+          <h3 class="cart-product__name">Adidas LG2</h3>
+          <p class="cart-product__price">$1,000.00</p>
         </article>
       </section>
       <section class="cart">
         <h2>CARRITO</h2>
-        <div>
-          <img src="assets/jersey.png" alt="" />
-          <p>Chamarra</p>
-          <p>$1,500</p>
-          <i
-            ><img
-              src="assets/delete-gray-color.png"
-              alt="Icono Quitar"
-              class="delete-icon"
-          /></i>
-        </div>
       </section>
     </main>
+    <script src="/utils/script.js"></script>
   </body>
 </html>

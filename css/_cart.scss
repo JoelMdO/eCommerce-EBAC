@@ -1,0 +1,94 @@
+@use "variables" as *;
+@use "mixin";
+
+.cart {
+  display: none;
+  width: 60vw;
+  background-color: $cart-background-color;
+  padding: 25px;
+  box-sizing: border-box;
+  height: 50dvh;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*para que se quede fija, es necesario right and top*/
+  right: 5vw;
+  /*para que no se vea*/
+  top: 100px;
+  color: $black-color;
+  box-shadow: -25px 30px 10px 15px $cart-box-shadow-color;
+  /* -19hacia la izquierda, 1 hacia arriba, 22 desenfoque mas difuso, 15 radio de expansion*/
+  /*rgba es para el color de la sombra 0.3 para la opacidad*/
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  border-radius: 15px;
+}
+
+.cart-product {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid $black-color;
+  text-align: center;
+  width: 100%;
+  height: fit-content;
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  p {
+    font-size: 1.3em;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+
+    &:nth-child(2) {
+      font-weight: 600;
+      /*selecciona el segundo p(nth-child 2) de la clase cart en el div, para que sea negrita*/
+    }
+  }
+
+  i {
+    cursor: pointer;
+  }
+
+  .delete-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart-product {
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+    .delete-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
