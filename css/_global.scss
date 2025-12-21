@@ -1,0 +1,11 @@
+@use "variables" as *;
+@use "mixin";
+
+body {
+  width: 100%;
+  @include mixin.font-size-weight(15px, 300, $black-color);
+  font-family: "Lexend", sans-serif;
+  margin: 0;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,57 @@
+@use "variables" as *;
+@use "mixin";
+
+header {
+  @include mixin.flex-center;
+  width: 100%;
+  height: 20dvh;
+  padding: 20px 50px;
+  background-color: $header-background;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  .header-icon__menu,
+  .header-icon__carrito {
+    width: 50px;
+    cursor: pointer;
+    display: inline-flexbox;
+  }
+
+  .header-icon__menu--img,
+  .header-icon__carrito--img {
+    width: 100%;
+  }
+
+  .header-logo {
+    width: 100px;
+  }
+
+  .header-icon__carrito-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    position: relative; // For positioning the count
+  }
+
+  .header-icon__carrito-button.active {
+    border: 2px solid $red-color !important;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: $red-color;
+    color: $white-color;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}

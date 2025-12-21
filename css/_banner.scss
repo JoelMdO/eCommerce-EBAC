@@ -1,0 +1,42 @@
+@use "variables" as *;
+@use "mixin";
+
+.banner {
+  display: flex;
+  width: 100%;
+  height: 20dvh;
+  text-align: center;
+  flex-direction: column;
+  background-image: url("../assets/banner.jpg");
+  opacity: 0.8;
+  background-size: cover;
+  background-position-x: 75%;
+
+  h2 {
+    width: 100%;
+    @include mixin.font-size-weight(30px, 600, $white-color);
+    margin: 0;
+    border: 0;
+    color: $banner-h2-color;
+  }
+
+  p {
+    width: 100%;
+    /*change from 350px to 100% make it be along all the screen as rect line*/
+    margin: 0;
+    font-size: 25px;
+    opacity: 0.8;
+    color: $black-color;
+  }
+}
+
+@media (max-width: 674px) {
+  .banner {
+    h2 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}

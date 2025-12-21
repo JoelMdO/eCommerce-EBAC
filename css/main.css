@@ -172,6 +172,7 @@ header .cart-count {
   border-bottom: 1px solid #000;
   text-align: center;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 }
 .cart-product img {
@@ -220,6 +221,4 @@ header .cart-count {
     width: 20px;
     height: 20px;
   }
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=main.css.map */
