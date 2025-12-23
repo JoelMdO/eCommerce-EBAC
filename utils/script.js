@@ -71,16 +71,23 @@ document.addEventListener("DOMContentLoaded", () => {
         numberOfProducts++;
         span.textContent = "✓";
         // Update cart content
-        productsSelected.push({
+        const product = {
           name: button.parentElement.querySelector(".cart-product__name")
             .textContent,
           price: button.parentElement.querySelector(".cart-product__price")
             .textContent,
           image: button.parentElement.querySelector(".cart-product__image").src,
           id: `${id}`,
-        });
-        // Add cart UI content
-        productsSelected.forEach((product) => {
+        };
+        if (!productsSelected.some((product) => product.id === id)) {
+          productsSelected.push({
+            product,
+          });
+          console.log(
+            "products AFTER check on id",
+            JSON.stringify(productsSelected)
+          );
+          // Add cart UI content
           const div = document.createElement("div");
           div.classList.add(`cart-product`);
           div.dataset.id = product.id;
@@ -98,10 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
           /></button>
         `;
           cart.appendChild(div);
-        });
-        // Update cart count
-
-        console.log("product list after add", JSON.stringify(productsSelected));
+        }
       }
       document.getElementById("cartCount").textContent = numberOfProducts;
     });
