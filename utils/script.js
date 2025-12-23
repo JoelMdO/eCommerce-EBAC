@@ -165,4 +165,25 @@ document.addEventListener("DOMContentLoaded", () => {
       //   //}
     });
   });
+
+  ///--------------------------------------------------------
+  // Menu Button
+  ///--------------------------------------------------------
+  const menuButton = document.querySelector(".header-icon__menu-button");
+  const menu = document.querySelector(".menu");
+  const closeButton = document.querySelector(".menu-close__button");
+  menuButton.addEventListener("click", () => {
+    if (menu.style.display === "none" || menu.style.display === "") {
+      menu.style.display = "flex";
+      menu.style.opacity = "1";
+      return;
+    }
+    menu.style.display = "none";
+    menu.style.opacity = "0";
+  });
+
+  closeButton.addEventListener("click", () => {
+    menu.style.display = "none"; // Hide menu
+    menu.style.opacity = "0";
+  });
 });

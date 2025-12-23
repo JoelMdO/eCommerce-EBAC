@@ -1,0 +1,46 @@
+@use "variables" as *;
+
+.menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 65dvh;
+  width: 20vw;
+  background-color: $menu-background-color;
+  position: fixed;
+  top: 15dvh;
+  left: 20px;
+  box-shadow: 2px 8px 5px $cart-box-shadow-color;
+  padding: 20px;
+  box-sizing: border-box;
+  color: $menu-text-color;
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  border-radius: 15px;
+}
+
+.header-icon__menu-button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    border-bottom: 2px solid $menu-text-color;
+  }
+}
+
+.menu-close__button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.menu-close__text {
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}

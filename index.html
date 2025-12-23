@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <title>Tienda Adidas</title>
   </head>
 
@@ -17,11 +17,13 @@
     <header class="header">
       <!-- <i> for menu-->
       <i class="header-icon__menu"
-        ><img
-          class="header-icon__menu--img"
-          src="assets/menu.png"
-          alt="Icon Menu"
-      /></i>
+        ><button type="button" class="header-icon__menu-button">
+          <img
+            class="header-icon__menu--img"
+            src="assets/menu.png"
+            alt="Icon Menu"
+          /></button
+      ></i>
       <img class="header-logo" src="assets/adidas.png" alt="Logo Adidas" />
       <!-- Carrito -->
       <i class="header-icon__carrito"
@@ -153,6 +155,12 @@
       </section>
       <section class="cart">
         <h2>CARRITO</h2>
+      </section>
+      <section class="menu">
+        <h2>MENU</h2>
+        <button type="button" class="menu-close__button">
+          <span class="menu-close__text">X</span>
+        </button>
       </section>
     </main>
     <script src="/utils/script.js"></script>
