@@ -1,8 +1,8 @@
-import "./App.css";
+// import "./App.css";
 import Banner from "./components/banner";
 import Header from "./components/header";
 import Products from "./components/products";
-import "./styles/main.scss";
+//import "./styles/main.css";
 
 function App() {
   return (
