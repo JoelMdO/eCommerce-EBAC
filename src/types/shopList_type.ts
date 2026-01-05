@@ -1,13 +1,15 @@
-export interface ShopList {
+export interface ShopListType {
   id: number;
   name: string;
   price: string;
   image: string;
+  tag?: string;
 }
 
 export interface ProductState {
   shopList: {
     iconAdded: number[];
-    products: ShopList[];
+    products: ShopListType[];
+    processed: boolean;
   };
 }

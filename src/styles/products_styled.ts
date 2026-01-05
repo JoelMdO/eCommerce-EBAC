@@ -28,6 +28,7 @@ export const StyledProducts = styled.section`
     p {
       font-weight: 300; 
       font-size: 15px;
+      color: var(--black-color);
     }
 
     button {

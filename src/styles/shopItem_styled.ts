@@ -1,22 +1,48 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const StyledShopItem = styled.div`
+export const StyledShopItem = styled.div<{ tag?: string }>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 70%;
   height: fit-content;
-  background-color: transparent;
   gap: 50px;
   margin: 10px;
   color: var(--black-color);
-  background-image: linear-gradient(45deg, var(--menu-background), var(--shop-item));
-  box-shadow: 0 10px 10px 0px var(--cart-box-shadow-color);
+
+  ${(props) =>
+    props.tag === "checkout"
+      ? css`
+          text-align: center;
+          border: none;
+          width: 50%;
+          background-image: linear-gradient(
+            45deg,
+            var(--shop-item) var(--menu-background)
+          );
+          box-shadow: 0 10px 10px 0px var(--cart-box-shadow-color);
+        `
+      : css`
+          background-image: linear-gradient(
+            45deg,
+            var(--menu-background),
+            var(--shop-item)
+          );
+          box-shadow: 0 10px 10px 0px var(--cart-box-shadow-color);
+        `}
 
   img {
     width: 100px;
     height: 100px;
+  }
+
+  .shop-item__text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 
   .delete-icon {
@@ -46,30 +72,31 @@ export const StyledShopItem = styled.div`
     cursor: pointer;
   }
 
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 20px;
 
+    .shop-item__text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
 
-  &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media (max-width: 500px) {
-  .cart-product {
     img {
       width: 50px;
       height: 50px;
     }
 
     p {
-      font-size: 0.8em;
+      text-align: center;
+      font-size: 12px;
     }
+
     .delete-icon {
       width: 20px;
       height: 20px;
     }
   }
-}
 `;

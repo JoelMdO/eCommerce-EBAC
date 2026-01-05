@@ -21,7 +21,7 @@ const Cart = () => {
       >
         <img
           className="header-icon__carrito--img"
-          src="/assets/cart.png"
+          src="src/assets/cart.png"
           alt="Icono de carrito"
         />
         <span id="cartCount" className="cart-count">

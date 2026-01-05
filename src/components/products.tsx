@@ -7,6 +7,7 @@ import {
   countAddedProduct,
 } from "../slices/shopList_slice";
 import type { ProductState } from "../types/shopList_type";
+import formattedNumber from "../utils/format_number";
 
 const Products = () => {
   //
@@ -35,9 +36,9 @@ const Products = () => {
                   isAdded ? "cart-product_add-active" : "cart-product_add"
                 }
                 onClick={() => {
+                  dispatch(countAddedProduct(product));
                   dispatch(addProduct(product));
                   dispatch(changeIconToAdded(product.id));
-                  dispatch(countAddedProduct());
                 }}
               >
                 <span
@@ -51,7 +52,9 @@ const Products = () => {
                 </span>
               </button>
               <h3 className="cart-product__name">{product.name}</h3>
-              <p className="cart-product__price">{product.price}</p>
+              <p className="cart-product__price">
+                $ {formattedNumber(Number(product.price))}
+              </p>
             </article>
           );
         })}

@@ -1,16 +1,17 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { ShopList } from "../types/shopList_type";
-
+import type { ShopListType } from "../types/shopList_type";
 export interface ShopListState {
-  products: ShopList[];
+  products: ShopListType[];
   iconAdded?: number[];
   counter?: number;
+  processed?: boolean;
 }
 
 const initialState: ShopListState = {
   products: [],
   iconAdded: [],
   counter: 0,
+  processed: false,
 };
 
 // Create a slice for guides
@@ -18,17 +19,22 @@ export const shopListSlice = createSlice({
   name: "shopList",
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<ShopList>) => {
+    addProduct: (state, action: PayloadAction<ShopListType>) => {
       const incomingProduct = action.payload;
-      const id = incomingProduct.id;
-      const existingIndex = state.products.findIndex(
-        (product) => product.id === id
+      //const id = incomingProduct.id;
+      const existingIndex = state.products.find(
+        (product) => product.id === action.payload.id
       );
-      if (existingIndex !== -1) {
+      if (!existingIndex) {
         // replace existing product data
-        state.products[existingIndex] = { ...incomingProduct };
-      } else {
+        console.log("product not found, adding");
+
+        //state.products[existingIndex] = { ...incomingProduct };
         state.products.push({ ...incomingProduct });
+      } else {
+        console.log("product found");
+
+        //state.products.push({ ...incomingProduct });
       }
     },
     deleteProduct: (
@@ -55,11 +61,25 @@ export const shopListSlice = createSlice({
       if (!state.iconAdded) return;
       state.iconAdded = state.iconAdded.filter((i) => i !== id);
     },
-    countAddedProduct: (state) => {
-      state.counter = (state.counter || 0) + 1;
+    countAddedProduct: (state, action: PayloadAction<ShopListType>) => {
+      //const incomingProduct = action.payload;
+      //const id = incomingProduct.id;
+      const existingIndex = state.products.find(
+        (product) => product.id === action.payload.id
+      );
+      console.log("id", action.payload.id);
+
+      console.log("existingIndex", existingIndex);
+
+      if (!existingIndex) {
+        state.counter = (state.counter || 0) + 1;
+      }
     },
     countRemovedProduct: (state) => {
       state.counter = (state.counter || 0) - 1;
+    },
+    processPayment: (state) => {
+      state.processed = true;
     },
   },
 });
@@ -72,6 +92,7 @@ export const {
   removedIconToAdded,
   countAddedProduct,
   countRemovedProduct,
+  processPayment,
 } = shopListSlice.actions;
 
 // Export reducer

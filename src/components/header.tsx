@@ -1,6 +1,5 @@
 import Cart from "./cart";
 import Menu from "./menu";
-import ShopList from "./shop_list";
 import {
   StyledHeader,
   StyledHeaderIconMenu,
@@ -9,6 +8,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { openMenu } from "../slices/open_slice";
 import type { RootState, AppDispatch } from "../store/store";
+import ShopList from "./shop_list";
 
 const Header = () => {
   //
@@ -31,13 +31,13 @@ const Header = () => {
             className="header-icon__menu-button"
             onClick={() => dispatch(openMenu())}
           >
-            <img src="/assets/menu.png" alt="Icon Menu" />
+            <img src="src/assets/menu.png" alt="Icon Menu" />
           </button>
         </StyledHeaderIconMenu>
         {/* <img */}
         <StyledLogoImage
           className="header-logo"
-          src="/assets/adidas.png"
+          src="src/assets/adidas.png"
           alt="Logo Adidas"
         />
         <Cart />

@@ -3,7 +3,8 @@ import type { AppDispatch } from "../store/store";
 import { StyledShopList } from "../styles/shopList_styled";
 import { closeShopList } from "../slices/open_slice";
 import ShopItem from "./shopList_item";
-import type { ProductState, ShopList } from "../types/shopList_type";
+import type { ProductState, ShopListType } from "../types/shopList_type";
+import { Link } from "react-router";
 
 const ShopList = () => {
   //
@@ -28,7 +29,7 @@ const ShopList = () => {
             Animate a comprar, aun no hay productos en el carrito
           </p>
         )}
-        {products.map((product: ShopList) => (
+        {products.map((product: ShopListType) => (
           <ShopItem
             key={product.id}
             name={product.name}
@@ -37,6 +38,13 @@ const ShopList = () => {
             id={product.id}
           />
         ))}
+        {products.length > 0 && (
+          <div className="shoplist-checkout-button_container">
+            <Link className="shoplist-checkout-button" to="/checkout">
+              Comprar
+            </Link>
+          </div>
+        )}
       </StyledShopList>
     </>
   );

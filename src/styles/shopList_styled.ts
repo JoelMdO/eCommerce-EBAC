@@ -44,4 +44,66 @@ export const StyledShopList = styled.section`
     font-size: max(1rem, 1.2vw);
     text-align: center;
   }
+
+  .shoplist-checkout-button_container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    height: fit-content;
+    margin-top: 20px;
+    margin-right: 10vw;
+}
+    .shoplist-checkout-button {
+      margin: 0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      color: var(--black-color);
+      text-decoration: none;
+      font-size: max(1rem, 1.2vw);
+      background-color: var(--button-addcolor-active);
+      box-shadow: 2px 2px 5px var(--blue-color);
+      cursor: pointer;
+    }
+
+    .shoplist-checkout-button:hover {
+      background-color: var(--button-addcolor);
+    }
+
+  @media (max-width: 768px) {
+
+  .menu-close_noproducts-text {
+    font-size: 16px;
+  }
+
+  .shoplist-checkout-button_container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    height: fit-content;
+    margin-top: 20px;
+    margin-right: 10vw;
+}
+    .shoplist-checkout-button {
+      margin: 0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      color: var(--black-color);
+      text-decoration: none;
+      font-size: max(1rem, 1.2vw);
+      background-color: var(--button-addcolor-active);
+      box-shadow: 2px 2px 5px var(--blue-color);
+      cursor: pointer;
+    }
+
+    .shoplist-checkout-button:hover {
+      background-color: var(--button-addcolor);
+    }
+  }
+  }
 `;

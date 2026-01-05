@@ -1,17 +1,9 @@
-// import "./App.css";
-import Banner from "./components/banner";
-import Header from "./components/header";
-import Products from "./components/products";
-//import "./styles/main.css";
+import Login from "./components/login";
 
 function App() {
   return (
     <>
-      <Header />
-      <main>
-        <Banner />
-        <Products />
-      </main>
+      <Login />
     </>
   );
 }

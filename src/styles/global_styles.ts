@@ -7,6 +7,7 @@ declare module "styled-components" {
       red: string;
       white: string;
       black: string;
+      blue: string;
       cartBackground: string;
       cartBoxShadow: string;
       bannerH2: string;
@@ -24,6 +25,7 @@ export const theme = {
     red: "#ff0000",
     white: "#fff",
     black: "#000",
+    blue: "#042e5eb0",
     cartBackground: "#87c7e0",
     cartBoxShadow: "rgba(0, 0, 0, 0.3)",
     bannerH2: "rgb(10, 88, 234)",
@@ -40,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     --red-color: ${(props) => props.theme.colors.red};
     --white-color: ${(props) => props.theme.colors.white};
     --black-color: ${(props) => props.theme.colors.black};
+    --blue-color: ${(props) => props.theme.colors.blue};
     --cart-background-color: ${(props) => props.theme.colors.cartBackground};
     --cart-box-shadow-color: ${(props) => props.theme.colors.cartBoxShadow};
     --banner-h2-color: ${(props) => props.theme.colors.bannerH2};

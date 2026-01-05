@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+    "types": ["jest", "node"],
+    "esModuleInterop": true
   },
   "files": [],
   "references": [

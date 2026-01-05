@@ -14,6 +14,7 @@ export const StyledMenu = styled.section`
   position: fixed;
   top: 15dvh;
   left: 0;
+  z-index: 50;
 
   img {
     width: 100%;
@@ -35,7 +36,7 @@ export const StyledMenu = styled.section`
     border: 2px solid var(--red-color);
   }
 
-  & span {
+  .menu-close__text {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -49,5 +50,45 @@ export const StyledMenu = styled.section`
     justify-content: center;
     font-size: 12px;
     font-weight: bold;
+  }
+
+  .menu-logout {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--black-color);
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    width: 40vw;
+    top: 15dvh;
+    left: 1vw;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .menu-close__button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .menu-close__button.active {
+      border: 2px solid var(--red-color);
+    }
   }
 `;

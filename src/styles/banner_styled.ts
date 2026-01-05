@@ -6,7 +6,7 @@ export const StyledBanner = styled.section`
   flex-direction: column;
   width: 100%;
   height: 20dvh;
-  background-image: url("../assets/banner.jpg");
+  background-image: url("src/assets/banner.jpg");
   opacity: 0.8;
   background-size: cover;
   background-position-x: 75%;
@@ -29,16 +29,13 @@ export const StyledBanner = styled.section`
     opacity: 0.8;
     color: var(--black-color);
   }
-}
 
-@media (max-width: 674px) {
-  .banner {
+@media (max-width: 678px) {
     h2 {
-      font-size: 25px;
+      font-size: 24px;
     }
     p {
       font-size: 20px;
     }
-  }
-}
+}}
 `;
