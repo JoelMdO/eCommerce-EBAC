@@ -19,13 +19,13 @@ const ShopList = () => {
     <>
       <StyledShopList>
         {/* <section className="sStyledShopList"> */}
-        <h2>CARRITO</h2>
+        <h2 lang="es">CARRITO</h2>
         <button type="button" onClick={() => dispatch(closeShopList())}>
           <span className="menu-close__text">X</span>
         </button>
         {/* </section> */}
         {products.length === 0 && (
-          <p className="menu-close_noproducts-text">
+          <p className="menu-close_noproducts-text" lang="es">
             Animate a comprar, aun no hay productos en el carrito
           </p>
         )}
@@ -40,7 +40,12 @@ const ShopList = () => {
         ))}
         {products.length > 0 && (
           <div className="shoplist-checkout-button_container">
-            <Link className="shoplist-checkout-button" to="/checkout">
+            <Link
+              className="shoplist-checkout-button"
+              to="/checkout"
+              lang="es"
+              role="navigation"
+            >
               Comprar
             </Link>
           </div>

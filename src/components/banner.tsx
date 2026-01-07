@@ -6,8 +6,8 @@ const Banner = () => {
     <>
       <StyledBanner>
         {/* <section className="banner"> */}
-        <h2>Productos Nuevos</h2>
-        <p>Conocelos</p>
+        <h2 lang="es">Productos Nuevos</h2>
+        <p lang="es">Conocelos</p>
         {/* </section> */}
       </StyledBanner>
     </>

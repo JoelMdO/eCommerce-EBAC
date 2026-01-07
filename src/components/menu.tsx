@@ -11,17 +11,23 @@ const Menu = () => {
   return (
     <>
       {/* <section className="menu"> */}
-      <StyledMenu>
-        <h2>MENU</h2>
+      <StyledMenu aria-controls="menu">
+        <h2 lang="es">MENU</h2>
         <button
+          id="menubutton-close"
           type="button"
           className="menu-close__button"
+          aria-labelledby="menubutton-close"
           onClick={() => dispatch(closeMenu())}
         >
-          <span className="menu-close__text">X</span>
+          <span className="menu-close__text" aria-label="Cerrar">
+            X
+          </span>
         </button>
-        <Link to="/">
-          <span className="menu-logout">Logout</span>
+        <Link to="/" role="navigation">
+          <span className="menu-logout" lang="es" aria-label="Cerrar sesión">
+            Cerrar sesión
+          </span>
         </Link>
         {/* </section> */}
       </StyledMenu>

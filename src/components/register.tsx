@@ -35,47 +35,73 @@ const Register = () => {
         </div>
       ) : (
         <>
-          <h2>Registra tu cuenta</h2>
+          <h2 lang="es">Registra tu cuenta</h2>
           <img
             className="register-logo"
             src="src/assets/adidas.png"
             alt="Logo"
           />
-          <form className="register-form" onSubmit={handleSubmit(onsubmit)}>
+          <form
+            className="register-form"
+            aria-label="Formulario de registro de usuarios"
+            onSubmit={handleSubmit(onsubmit)}
+          >
+            <label lang="es" htmlFor="name">
+              Nombre
+            </label>
             <input
+              id="name"
               type="text"
-              placeholder="Name"
+              placeholder="Nombre"
+              aria-placeholder="Nombre"
               {...register("name", { required: true, maxLength: 80 })}
             />
             {errors.name && (
-              <p className="register-form-error">Nombre incorrecto</p>
+              <p className="register-form-error" lang="es">
+                Nombre incorrecto
+              </p>
             )}
+            <label lang="es" htmlFor="email">
+              Correo
+            </label>
             <input
+              id="email"
               type="text"
-              placeholder="Email"
+              placeholder="Correo"
+              aria-placeholder="Correo"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
             {errors.email && (
-              <p className="register-form-error">Email incorrecto</p>
+              <p className="register-form-error" lang="es">
+                Correo incorrecto
+              </p>
             )}
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
+              aria-placeholder="Contraseña"
               {...register("password", { required: true })}
             />
             {errors.password && (
-              <p className="register-form-error">Contraseña incorrecta</p>
+              <p className="register-form-error" lang="es">
+                Contraseña incorrecta
+              </p>
             )}
             <button type="submit">
               {registeringIn ? "Creando registro..." : "Registrate"}
             </button>
           </form>
-          <Link className="register-nav_link" to="/">
+          <Link
+            className="register-nav_link"
+            to="/"
+            lang="es"
+            role="navigation"
+          >
             Cancelar
           </Link>
           {serverError ? (
             <div className="register_error_text">
-              <p>
+              <p lang="es">
                 Error en registro, por favor intente de nuevo o contacte al
                 administrador
               </p>

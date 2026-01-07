@@ -24,49 +24,70 @@ const Login = () => {
     <>
       <StyledLogin>
         <img className="login-logo" src="src/assets/adidas.png" alt="Logo" />
-        <div className="login-welcome_text">Bienvenido</div>
+        <div className="login-welcome_text" lang="es">
+          Bienvenido
+        </div>
         <div className="login-container">
           <form
             className="login-form"
+            aria-label="Formulario de inicio de sesión"
             onSubmit={handleSubmit(onsubmit)}
             onFocus={() => setServerError(false)}
           >
+            <label htmlFor="femail" lang="es">
+              Correo
+            </label>
             <input
+              id="femail"
               type="text"
-              placeholder="Email"
+              placeholder="Correo"
+              aria-placeholder="Correo"
               {...register("email", {
                 required: true,
                 pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               })}
             />
             {errors.email && (
-              <p className="login-form-error">Email incorrecto</p>
+              <p className="login-form-error" lang="es">
+                Email incorrecto
+              </p>
             )}
+            <label htmlFor="fpassword" lang="es">
+              Contraseña
+            </label>
             <input
+              id="fpassword"
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
+              aria-placeholder="Contraseña"
               {...register("password", { required: true, maxLength: 8 })}
             />
             {errors.password && (
-              <p className="login-form-error">Contraseña incorrecta</p>
+              <p className="login-form-error" lang="es">
+                Contraseña incorrecta
+              </p>
             )}
-            <button type="submit">{loggingIn ? "Logging..." : "Login"}</button>
+            <button type="submit" lang="es">
+              {loggingIn ? "Iniciando sesión..." : "Iniciar sesión"}
+            </button>
           </form>
           {serverError ? (
             <div className="login-register_error_text">
-              <p>
+              <p lang="es">
                 Error de acceso, verifique sus credenciales o contacte al
                 administrador
               </p>
             </div>
           ) : (
             <div className="login-register_text">
-              <p>¿Sin cuenta, aún?</p>
-              <Link to="/register">Regístrate</Link>
+              <p lang="es">¿Sin cuenta, aún?</p>
+              <Link to="/register" lang="es">
+                Regístrate
+              </Link>
             </div>
           )}
         </div>
-        <div className="login-footer_text">
+        <div className="login-footer_text" lang="es">
           <img
             className="joel-logo"
             src="src/assets/JoeLogo2025.png"

@@ -18,8 +18,8 @@ const ShopItem = ({ name, image, price, id, tag }: ShopListType) => {
       <StyledShopItem tag={tag}>
         <img src={image} alt={name} />
         <div className="shop-item__text-container">
-          <p>{name}</p>
-          <p>$ {`${formattedNumber(Number(price))}`}</p>
+          <p lang="es">{name}</p>
+          <p lang="es">$ {`${formattedNumber(Number(price))}`}</p>
         </div>
         {tag === "checkout" ? null : (
           <button
