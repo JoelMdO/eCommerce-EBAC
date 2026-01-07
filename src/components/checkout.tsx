@@ -36,9 +36,9 @@ const Checkout = () => {
         ) : (
           <>
             {products.length === 0 && !purchaseDone ? (
-              <h1>Ops! Creo que olvidaste agregar algún producto.</h1>
+              <h1 lang="es">Ops! Creo que olvidaste agregar algún producto.</h1>
             ) : (
-              <h1>Excelente selección</h1>
+              <h1 lang="es">Excelente selección</h1>
             )}
             {products.map((product) => (
               <ShopItem
@@ -50,7 +50,11 @@ const Checkout = () => {
                 tag="checkout"
               />
             ))}
-            <dialog className="shipment-data_dialog">
+            <dialog
+              className="shipment-data_dialog"
+              aria-modal="true"
+              role="dialog"
+            >
               <ShipmentDataForm
                 dispatch={dispatch}
                 closeDialog={() => {
@@ -68,6 +72,7 @@ const Checkout = () => {
                   <button
                     className="shoplist-checkout-nav-button"
                     type="button"
+                    lang="es"
                   >
                     Ir a la tienda
                   </button>
@@ -77,6 +82,7 @@ const Checkout = () => {
                   <button
                     className="shoplist-checkout-button"
                     type="button"
+                    lang="es"
                     onClick={() => {
                       const dialog = document.querySelector(
                         ".shipment-data_dialog"
@@ -90,6 +96,7 @@ const Checkout = () => {
                     <button
                       className="shoplist-checkout-nav-button"
                       type="button"
+                      lang="es"
                     >
                       Cancelar
                     </button>

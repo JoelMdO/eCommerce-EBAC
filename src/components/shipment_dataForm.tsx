@@ -22,9 +22,12 @@ const ShipmentDataForm = ({
   return (
     <>
       <form className="checkout-form" onSubmit={handleSubmit(onsubmit)}>
-        <h2>Datos de envío</h2>
+        <h2 lang="es">Datos de envío</h2>
         <div className="checkout-form_name">
           <UserRound size={16} />
+          <label htmlFor="name" lang="es">
+            Nombre
+          </label>
           <input
             type="text"
             placeholder="Nombre completo"
@@ -36,6 +39,9 @@ const ShipmentDataForm = ({
         </div>
         <div className="checkout-form_address">
           <House size={16} />
+          <label htmlFor="address" lang="es">
+            Dirección
+          </label>
           <input
             type="text"
             placeholder="Dirección"
@@ -47,13 +53,18 @@ const ShipmentDataForm = ({
         </div>
         <div className="checkout-form_card">
           <CreditCard size={16} />
+          <label htmlFor="creditCard" lang="es">
+            Tarjeta
+          </label>
           <input
             type="text"
-            placeholder="Credit Card"
+            placeholder="Tarjeta de crédito"
             {...register("creditCard", { required: true })}
           />
           {errors.creditCard && (
-            <p className="checkout-form-error">Tarjeta incorrecta</p>
+            <p className="checkout-form-error" lang="es">
+              Tarjeta incorrecta
+            </p>
           )}
         </div>
         <div className="checkout-form_phone">
@@ -64,10 +75,12 @@ const ShipmentDataForm = ({
             {...register("phone", { required: true })}
           />
           {errors.phone && (
-            <p className="checkout-form-error">Teléfono incorrecto</p>
+            <p className="checkout-form-error" lang="es">
+              Teléfono incorrecto
+            </p>
           )}
         </div>
-        <button className="checkout-form_submit-button" type="submit">
+        <button className="checkout-form_submit-button" type="submit" lang="es">
           Pagar
         </button>
       </form>

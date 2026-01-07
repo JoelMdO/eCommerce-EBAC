@@ -24,7 +24,7 @@ const Products = () => {
         {productsList.map((product) => {
           const isAdded = iconAdded.includes(product.id);
           return (
-            <article key={product.id}>
+            <div key={product.id}>
               <img
                 className="cart-product__image"
                 src={product.image}
@@ -55,7 +55,7 @@ const Products = () => {
               <p className="cart-product__price">
                 $ {formattedNumber(Number(product.price))}
               </p>
-            </article>
+            </div>
           );
         })}
         {/* </section> */}
