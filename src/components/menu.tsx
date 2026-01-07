@@ -1,0 +1,38 @@
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "../store/store";
+import { StyledMenu } from "../styles/menu_styled";
+import { closeMenu } from "../slices/open_slice";
+import { Link } from "react-router";
+
+const Menu = () => {
+  //
+  const dispatch = useDispatch<AppDispatch>();
+  //
+  return (
+    <>
+      {/* <section className="menu"> */}
+      <StyledMenu aria-controls="menu">
+        <h2 lang="es">MENU</h2>
+        <button
+          id="menubutton-close"
+          type="button"
+          className="menu-close__button"
+          aria-labelledby="menubutton-close"
+          onClick={() => dispatch(closeMenu())}
+        >
+          <span className="menu-close__text" aria-label="Cerrar">
+            X
+          </span>
+        </button>
+        <Link to="/" role="navigation">
+          <span className="menu-logout" lang="es" aria-label="Cerrar sesión">
+            Cerrar sesión
+          </span>
+        </Link>
+        {/* </section> */}
+      </StyledMenu>
+    </>
+  );
+};
+
+export default Menu;

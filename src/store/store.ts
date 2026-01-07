@@ -1,0 +1,15 @@
+import { configureStore } from "@reduxjs/toolkit";
+import { shopListSlice } from "../slices/shopList_slice";
+import openReducer from "../slices/open_slice";
+// Configure the store
+const store = configureStore({
+  reducer: {
+    shopList: shopListSlice.reducer,
+    openState: openReducer,
+  },
+});
+
+// Export the store and types
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export default store;
