@@ -81,8 +81,12 @@ export function checkContrast(color1: string, color2: string): ContrastResult {
 
 /**
  * Analyze all color combinations in the theme
+ * 
+ * IMPORTANT: Keep these theme colors in sync with src/styles/global_styles.ts
+ * When theme colors change, update this function to match.
  */
 export function analyzeThemeContrast() {
+  // Theme colors - MUST MATCH src/styles/global_styles.ts
   const theme = {
     headerBackground: "#333",
     red: "#cc0000",  // Updated for better contrast (5.89:1 on white vs 4.00:1)

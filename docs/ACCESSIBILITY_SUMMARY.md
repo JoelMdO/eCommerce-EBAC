@@ -186,6 +186,9 @@ When making future changes:
 2. **Test new colors**
    - Run `node scripts/analyze-contrast.js` after color changes
    - Ensure new combinations meet 4.5:1 minimum (AA)
+   - **IMPORTANT:** When updating theme colors in `global_styles.ts`, also update:
+     - `scripts/analyze-contrast.js` (line 64+)
+     - `src/utils/contrastChecker.ts` (analyzeThemeContrast function)
 
 3. **Follow patterns**
    - Light backgrounds → use black text

@@ -55,7 +55,8 @@ function checkContrast(color1, color2) {
   };
 }
 
-// Theme colors from global_styles.ts
+// Theme colors - IMPORTANT: Keep in sync with src/styles/global_styles.ts
+// When theme colors change in the application, update these values to match
 const theme = {
   headerBackground: "#333",
   red: "#cc0000",  // Updated for better contrast
