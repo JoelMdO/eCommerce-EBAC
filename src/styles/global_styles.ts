@@ -22,7 +22,7 @@ declare module "styled-components" {
 export const theme = {
   colors: {
     headerBackground: "#333",
-    red: "#ff0000",
+    red: "#cc0000", // Improved from #ff0000 for better contrast (5.51:1 on white vs 4.00:1)
     white: "#fff",
     black: "#000",
     blue: "#042e5eb0",

@@ -85,7 +85,7 @@ export function checkContrast(color1: string, color2: string): ContrastResult {
 export function analyzeThemeContrast() {
   const theme = {
     headerBackground: "#333",
-    red: "#ff0000",
+    red: "#cc0000",  // Updated for better contrast (5.89:1 on white vs 4.00:1)
     white: "#fff",
     black: "#000",
     blue: "#042e5eb0",
@@ -103,8 +103,8 @@ export function analyzeThemeContrast() {
     { name: "Header text on header background", fg: theme.white, bg: theme.headerBackground },
     
     // Button combinations
-    { name: "Button text on buttonAdd", fg: theme.white, bg: theme.buttonAdd },
-    { name: "Button text on buttonAddActive", fg: theme.black, bg: theme.buttonAddActive },
+    { name: "Button text (black) on buttonAdd", fg: theme.black, bg: theme.buttonAdd },
+    { name: "Button text (black) on buttonAddActive", fg: theme.black, bg: theme.buttonAddActive },
     { name: "Banner H2 on banner background", fg: theme.bannerH2, bg: theme.white },
     
     // Login/Register button

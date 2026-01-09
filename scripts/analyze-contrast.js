@@ -58,7 +58,7 @@ function checkContrast(color1, color2) {
 // Theme colors from global_styles.ts
 const theme = {
   headerBackground: "#333",
-  red: "#ff0000",
+  red: "#cc0000",  // Updated for better contrast
   white: "#fff",
   black: "#000",
   blue: "#042e5e",
@@ -73,7 +73,7 @@ const theme = {
 // Color combinations to test
 const tests = [
   { name: "Header text on header background", fg: theme.white, bg: theme.headerBackground, element: "Header" },
-  { name: "Button text (white) on buttonAdd (yellow)", fg: theme.white, bg: theme.buttonAdd, element: "Product Add Button" },
+  { name: "Button text (black) on buttonAdd (yellow)", fg: theme.black, bg: theme.buttonAdd, element: "Product Add Button" },
   { name: "Button text (black) on buttonAddActive (green)", fg: theme.black, bg: theme.buttonAddActive, element: "Active Add Button" },
   { name: "Banner H2 on white background", fg: theme.bannerH2, bg: theme.white, element: "Banner Heading" },
   { name: "Login button text (white) on blue", fg: theme.white, bg: theme.bannerH2, element: "Login/Register Button" },

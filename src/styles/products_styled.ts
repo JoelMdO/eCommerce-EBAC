@@ -37,7 +37,7 @@ export const StyledProducts = styled.section`
       background-color: var(--button-addcolor);
       border: none;
       border-radius: 5px;
-      color: var(--white-color);
+      color: var(--black-color);
       font-size: 14px;
       cursor: pointer;
       z-index: 50;
