@@ -50,6 +50,10 @@ export const GlobalStyle = createGlobalStyle`
     --button-addcolor-active: ${(props) => props.theme.colors.buttonAddActive};
     --menu-background: ${(props) => props.theme.colors.menuBackgroundColor};
     --shop-item: ${(props) => props.theme.colors.shopItem};
+
+    & label {
+    color: transparent;
+    }
   }
 
   *, *::before, *::after { box-sizing: border-box; }
