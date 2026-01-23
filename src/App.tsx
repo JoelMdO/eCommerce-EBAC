@@ -1,9 +1,11 @@
-import Login from "./components/login";
+import AppRouter from "./router/AppRouter";
+import { GlobalStyle } from "./styles/global_styles";
 
 function App() {
   return (
     <>
-      <Login />
+      <GlobalStyle />
+      <AppRouter />
     </>
   );
 }

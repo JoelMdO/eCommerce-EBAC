@@ -1,4 +1,4 @@
-export interface ShopListType {
+export interface cartType {
   id: number;
   name: string;
   price: string;
@@ -7,9 +7,9 @@ export interface ShopListType {
 }
 
 export interface ProductState {
-  shopList: {
+  cart: {
     iconAdded: number[];
-    products: ShopListType[];
+    products: cartType[];
     processed: boolean;
   };
 }

@@ -1,8 +1,6 @@
-// import "./App.css";
-import Banner from "./banner";
-import Header from "./header";
-import Products from "./products";
-//import "./styles/main.css";
+import Banner from "../../components/home/banner";
+import Header from "../../components/home/header";
+import Products from "../../components/home/products";
 
 function Home() {
   return (

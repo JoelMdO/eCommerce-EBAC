@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { UserData } from "../types/form_type";
+import type { UserData } from "../../types/form_type";
 
 interface SignUpState {
   authenticated: boolean;

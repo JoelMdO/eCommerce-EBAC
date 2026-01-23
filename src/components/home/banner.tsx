@@ -1,14 +1,10 @@
-import { StyledBanner } from "../styles/banner_styled";
-
-// import "../styles/_banner.scss";
+import { StyledBanner } from "../../styles/banner_styled";
 const Banner = () => {
   return (
     <>
       <StyledBanner>
-        {/* <section className="banner"> */}
         <h2 lang="es">Productos Nuevos</h2>
         <p lang="es">Conocelos</p>
-        {/* </section> */}
       </StyledBanner>
     </>
   );

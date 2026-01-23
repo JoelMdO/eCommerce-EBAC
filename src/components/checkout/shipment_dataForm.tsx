@@ -1,8 +1,8 @@
 import { CreditCard, House, Phone, UserRound } from "lucide-react";
-import type { AppDispatch } from "../store/store";
+import type { AppDispatch } from "../../redux/store/store";
 import { useForm } from "react-hook-form";
-import { formPayment } from "../utils/form_submission";
-import type { ShipmentDataType } from "../types/form_type";
+import { formPayment } from "../../utils/form_submission";
+import type { ShipmentDataType } from "../../types/form_type";
 
 const ShipmentDataForm = ({
   dispatch,
@@ -25,12 +25,11 @@ const ShipmentDataForm = ({
         <h2 lang="es">Datos de envío</h2>
         <div className="checkout-form_name">
           <UserRound size={16} />
-          <label htmlFor="name" lang="es">
-            Nombre
-          </label>
           <input
             type="text"
             placeholder="Nombre completo"
+            aria-label="Nombre"
+            aria-placeholder="Nombre completo"
             {...register("name", { required: true })}
           />
           {errors.name && (
@@ -39,12 +38,11 @@ const ShipmentDataForm = ({
         </div>
         <div className="checkout-form_address">
           <House size={16} />
-          <label htmlFor="address" lang="es">
-            Dirección
-          </label>
           <input
             type="text"
             placeholder="Dirección"
+            aria-label="Dirección"
+            aria-placeholder="Dirección"
             {...register("address", { required: true })}
           />
           {errors.address && (
@@ -53,12 +51,11 @@ const ShipmentDataForm = ({
         </div>
         <div className="checkout-form_card">
           <CreditCard size={16} />
-          <label htmlFor="creditCard" lang="es">
-            Tarjeta
-          </label>
           <input
             type="text"
             placeholder="Tarjeta de crédito"
+            aria-label="Tarjeta de crédito"
+            aria-placeholder="Tarjeta de crédito"
             {...register("creditCard", { required: true })}
           />
           {errors.creditCard && (

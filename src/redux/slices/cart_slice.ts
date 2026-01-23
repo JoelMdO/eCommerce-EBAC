@@ -1,13 +1,13 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { ShopListType } from "../types/shopList_type";
-export interface ShopListState {
-  products: ShopListType[];
+import type { cartType } from "../../types/cart_type";
+export interface cartState {
+  products: cartType[];
   iconAdded?: number[];
   counter?: number;
   processed?: boolean;
 }
 
-const initialState: ShopListState = {
+const initialState: cartState = {
   products: [],
   iconAdded: [],
   counter: 0,
@@ -15,36 +15,32 @@ const initialState: ShopListState = {
 };
 
 // Create a slice for guides
-export const shopListSlice = createSlice({
-  name: "shopList",
+export const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<ShopListType>) => {
+    addProduct: (state, action: PayloadAction<cartType>) => {
       const incomingProduct = action.payload;
-      //const id = incomingProduct.id;
       const existingIndex = state.products.find(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.id,
       );
       if (!existingIndex) {
         // replace existing product data
-        console.log("product not found, adding");
+        //console.log("product not found, adding");
 
-        //state.products[existingIndex] = { ...incomingProduct };
         state.products.push({ ...incomingProduct });
       } else {
-        console.log("product found");
-
-        //state.products.push({ ...incomingProduct });
+        //console.log("product found");
       }
     },
     deleteProduct: (
       state,
       action: PayloadAction<{
         id: number;
-      }>
+      }>,
     ) => {
       const productIndex = state.products.findIndex(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.id,
       );
 
       if (productIndex !== -1) {
@@ -61,15 +57,13 @@ export const shopListSlice = createSlice({
       if (!state.iconAdded) return;
       state.iconAdded = state.iconAdded.filter((i) => i !== id);
     },
-    countAddedProduct: (state, action: PayloadAction<ShopListType>) => {
-      //const incomingProduct = action.payload;
-      //const id = incomingProduct.id;
+    countAddedProduct: (state, action: PayloadAction<cartType>) => {
       const existingIndex = state.products.find(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.id,
       );
-      console.log("id", action.payload.id);
+      //console.log("id", action.payload.id);
 
-      console.log("existingIndex", existingIndex);
+      //console.log("existingIndex", existingIndex);
 
       if (!existingIndex) {
         state.counter = (state.counter || 0) + 1;
@@ -79,7 +73,14 @@ export const shopListSlice = createSlice({
       state.counter = (state.counter || 0) - 1;
     },
     processPayment: (state) => {
+      // mark processed and clear cart contents (use Immer-style mutations)
       state.processed = true;
+      state.products = [];
+      state.iconAdded = [];
+      state.counter = 0;
+    },
+    clearProcessed: (state) => {
+      state.processed = false;
     },
   },
 });
@@ -93,7 +94,8 @@ export const {
   countAddedProduct,
   countRemovedProduct,
   processPayment,
-} = shopListSlice.actions;
+  clearProcessed,
+} = cartSlice.actions;
 
 // Export reducer
-export default shopListSlice.reducer;
+export default cartSlice.reducer;

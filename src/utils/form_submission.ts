@@ -1,12 +1,12 @@
-import { processPayment } from "../slices/shopList_slice";
-import { setAuthenticated } from "../slices/signup_slice";
+import { processPayment } from "../redux/slices/cart_slice";
+import { setAuthenticated } from "../redux/slices/signup_slice";
 import type { FormType, UserData } from "../types/form_type";
 export const formSubmission = (
   data: FormType,
   dispatchEvent: (action: ReturnType<typeof setAuthenticated>) => void,
   setServerError: (serverError: boolean) => void,
   setLoggingIn: (loggingIn: boolean) => void,
-  navigate: (path: string) => void
+  navigate: (path: string) => void,
 ) => {
   ///--------------------------------------------------------
   // IMPORTANT NOTE:
@@ -17,9 +17,13 @@ export const formSubmission = (
   try {
     setLoggingIn(true);
     const userData = sessionStorage.getItem("userData");
+    console.log("userData", userData);
 
     if (userData) {
       const parsedData: UserData = JSON.parse(userData);
+      console.log("parsedemail", parsedData.email);
+      console.log("parsedpassword", parsedData.password);
+
       if (
         parsedData.email === data.email &&
         parsedData.password === data.password
@@ -45,7 +49,7 @@ export const formSubmission = (
 
 export const formPayment = (
   dispatchEvent: (action: ReturnType<typeof processPayment>) => void,
-  closeDialog: () => void
+  closeDialog: () => void,
 ) => {
   ///--------------------------------------------------------
   // IMPORTANT NOTE:

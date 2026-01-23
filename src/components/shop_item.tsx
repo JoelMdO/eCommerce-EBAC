@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux";
 import { StyledShopItem } from "../styles/shopItem_styled";
-import type { ShopListType } from "../types/shopList_type";
+import type { cartType } from "../types/cart_type";
 import {
   countRemovedProduct,
   deleteProduct,
   removedIconToAdded,
-} from "../slices/shopList_slice";
+} from "../redux/slices/cart_slice";
 import formattedNumber from "../utils/format_number";
 
-const ShopItem = ({ name, image, price, id, tag }: ShopListType) => {
+const ShopItem = ({ name, image, price, id, tag }: cartType) => {
   //
   const dispatch = useDispatch();
   console.log("id en shop item", id);

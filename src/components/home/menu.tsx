@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../store/store";
-import { StyledMenu } from "../styles/menu_styled";
-import { closeMenu } from "../slices/open_slice";
+import type { AppDispatch } from "../../redux/store/store";
+import { StyledMenu } from "../../styles/menu_styled";
+import { closeMenu } from "../../redux/slices/open_slice";
 import { Link } from "react-router";
 
 const Menu = () => {
@@ -10,7 +10,6 @@ const Menu = () => {
   //
   return (
     <>
-      {/* <section className="menu"> */}
       <StyledMenu aria-controls="menu">
         <h2 lang="es">MENU</h2>
         <button
@@ -29,7 +28,6 @@ const Menu = () => {
             Cerrar sesión
           </span>
         </Link>
-        {/* </section> */}
       </StyledMenu>
     </>
   );

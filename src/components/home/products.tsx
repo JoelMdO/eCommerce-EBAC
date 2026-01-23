@@ -1,26 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
-import { productsList } from "../data/products_list";
-import { StyledProducts } from "../styles/products_styled";
+import { productsList } from "../../data/products_list";
+import { StyledProducts } from "../../styles/products_styled";
 import {
   addProduct,
   changeIconToAdded,
   countAddedProduct,
-} from "../slices/shopList_slice";
-import type { ProductState } from "../types/shopList_type";
-import formattedNumber from "../utils/format_number";
+} from "../../redux/slices/cart_slice";
+import type { ProductState } from "../../types/cart_type";
+import formattedNumber from "../../utils/format_number";
+import type { AppDispatch } from "../../redux/store/store";
 
 const Products = () => {
   //
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const iconAdded: number[] = useSelector(
-    (state: ProductState) => state.shopList.iconAdded || []
+    (state: ProductState) => state.cart.iconAdded || [],
   );
   //
   return (
     <>
       <StyledProducts>
-        {/* <section className="products"> */}
         {productsList.map((product) => {
           const isAdded = iconAdded.includes(product.id);
           return (
@@ -58,7 +58,6 @@ const Products = () => {
             </div>
           );
         })}
-        {/* </section> */}
       </StyledProducts>
     </>
   );

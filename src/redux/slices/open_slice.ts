@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface OpenState {
   menuOpen: boolean;
-  shopListOpen: boolean;
+  cartOpen: boolean;
 }
 
 const initialState: OpenState = {
   menuOpen: false,
-  shopListOpen: false,
+  cartOpen: false,
 };
 
 export const openSlice = createSlice({
@@ -20,16 +20,15 @@ export const openSlice = createSlice({
     closeMenu: (state) => {
       state.menuOpen = false;
     },
-    openShopList: (state) => {
-      state.shopListOpen = true;
+    opencart: (state) => {
+      state.cartOpen = true;
     },
-    closeShopList: (state) => {
-      state.shopListOpen = false;
+    closecart: (state) => {
+      state.cartOpen = false;
     },
   },
 });
 
-export const { openMenu, closeMenu, openShopList, closeShopList } =
-  openSlice.actions;
+export const { openMenu, closeMenu, opencart, closecart } = openSlice.actions;
 
 export default openSlice.reducer;

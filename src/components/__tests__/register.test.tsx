@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Register from "../register";
+import Register from "../../pages/registerPage/register";
 import { MemoryRouter } from "react-router";
 import userRegister from "../../utils/user_register";
 import "@testing-library/jest-dom";
@@ -23,7 +23,7 @@ describe("Register", () => {
     expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Password")).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /registrate/i })
+      screen.getByRole("button", { name: /registrate/i }),
     ).toBeInTheDocument();
   });
 
@@ -35,7 +35,7 @@ describe("Register", () => {
     expect(await screen.findByText("Nombre incorrecto")).toBeInTheDocument();
     expect(await screen.findByText("Email incorrecto")).toBeInTheDocument();
     expect(
-      await screen.findByText("Contraseña incorrecta")
+      await screen.findByText("Contraseña incorrecta"),
     ).toBeInTheDocument();
   });
 
@@ -60,7 +60,7 @@ describe("Register", () => {
         expect.any(Function),
         expect.any(Function),
         expect.any(Function),
-        expect.any(Function)
+        expect.any(Function),
       );
     });
   });

@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { shopListSlice } from "../slices/shopList_slice";
+import { cartSlice } from "../slices/cart_slice";
 import openReducer from "../slices/open_slice";
 // Configure the store
 const store = configureStore({
   reducer: {
-    shopList: shopListSlice.reducer,
+    cart: cartSlice.reducer,
     openState: openReducer,
   },
 });

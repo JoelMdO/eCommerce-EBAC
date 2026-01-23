@@ -1,23 +1,21 @@
-// import "../styles/_cart.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { StyledCart } from "../styles/cart_styled";
-import type { AppDispatch } from "../store/store";
-import { openShopList } from "../slices/open_slice";
+import { StyledCartButton } from "../../styles/cartButton_styled";
+import type { AppDispatch } from "../../redux/store/store";
+import { opencart } from "../../redux/slices/open_slice";
 
-const Cart = () => {
+const ButtonCart = () => {
   //
   const dispatch = useDispatch<AppDispatch>();
   const count = useSelector(
-    (state: { shopList: { counter: number } }) => state.shopList.counter
+    (state: { cart: { counter: number } }) => state.cart.counter,
   );
   //
   return (
-    // <div className="header-icon__carrito">
-    <StyledCart>
+    <StyledCartButton>
       <button
         type="button"
         className="header-icon__carrito-button"
-        onClick={() => dispatch(openShopList())}
+        onClick={() => dispatch(opencart())}
       >
         <img
           className="header-icon__carrito--img"
@@ -28,9 +26,8 @@ const Cart = () => {
           {count}
         </span>
       </button>
-      {/* </div> */}
-    </StyledCart>
+    </StyledCartButton>
   );
 };
 
-export default Cart;
+export default ButtonCart;
