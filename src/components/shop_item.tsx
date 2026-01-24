@@ -1,11 +1,7 @@
 import { useDispatch } from "react-redux";
 import { StyledShopItem } from "../styles/shopItem_styled";
 import type { cartType } from "../types/cart_type";
-import {
-  countRemovedProduct,
-  deleteProduct,
-  removedIconToAdded,
-} from "../redux/slices/cart_slice";
+import { deleteProduct, removedIconToAdded } from "../redux/slices/cart_slice";
 import formattedNumber from "../utils/format_number";
 import { SHOP_ITEM } from "../constants/shop_item";
 
@@ -30,7 +26,6 @@ const ShopItem = ({ name, image, price, id, tag }: cartType) => {
             className="cart-product__delete-button"
             onClick={() => {
               dispatch(deleteProduct({ id: id }));
-              dispatch(countRemovedProduct());
               dispatch(removedIconToAdded(id || 0));
             }}
           >

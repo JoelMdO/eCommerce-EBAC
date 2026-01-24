@@ -1,5 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { cartType } from "../../types/cart_type";
+import loadCartFromLocalStorage from "../../utils/load_cart_fromLocal";
+import saveCartToLocalStorage from "../../utils/save_cart_toLocal";
+import deleteCartFromLocalStorage from "../../utils/delete_cart_fromLocal";
 export interface cartState {
   products: cartType[];
   iconAdded?: number[];
@@ -8,9 +11,9 @@ export interface cartState {
 }
 
 const initialState: cartState = {
-  products: [],
+  products: loadCartFromLocalStorage().products,
   iconAdded: [],
-  counter: 0,
+  counter: loadCartFromLocalStorage().counter,
   processed: false,
 };
 
@@ -21,39 +24,14 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action: PayloadAction<cartType>) => {
       const incomingProduct = action.payload;
-
-      // Check if product already exists in the local storage
-      // If not save it, otherwise do nothing
-      const products = localStorage.getItem("cartProducts");
-      if (!products) {
-        localStorage.setItem(
-          "cartProducts",
-          JSON.stringify([...state.products, incomingProduct]),
-        );
-        state.products.push(incomingProduct);
-      }
-      if (products) {
-        const savedProducts = JSON.parse(products);
-        const existingIndex = savedProducts.find(
-          (product: cartType) => product.id === incomingProduct.id,
-        );
-
-        if (!existingIndex) {
-          localStorage.setItem(
-            "cartProducts",
-            JSON.stringify([...savedProducts, incomingProduct]),
-          );
-          state.products.push(incomingProduct);
-        }
-        // const existingIndex = state.products.find(
-        //   (product) => product.id === action.payload.id,
-        // );
-        // if (!existingIndex) {
+      const existingIndex = state.products.find(
+        (product) => product.id === action.payload.id,
+      );
+      if (!existingIndex) {
         // replace existing product data
-        //console.log("product not found, adding");
-        // state.products.push({ ...incomingProduct });
-        //} else {
-        //console.log("product found");
+        state.products.push({ ...incomingProduct });
+        state.counter = (state.counter || 0) + 1;
+        saveCartToLocalStorage(state.products[state.products.length - 1]);
       }
     },
     deleteProduct: (
@@ -68,7 +46,8 @@ export const cartSlice = createSlice({
 
       if (productIndex !== -1) {
         state.products.splice(productIndex, 1);
-        localStorage.setItem("cartProducts", JSON.stringify(state.products));
+        state.counter = state.counter! - 1;
+        deleteCartFromLocalStorage(state.products);
       }
     },
     changeIconToAdded: (state, action: PayloadAction<number>) => {
@@ -80,18 +59,6 @@ export const cartSlice = createSlice({
       const id = action.payload;
       if (!state.iconAdded) return;
       state.iconAdded = state.iconAdded.filter((i) => i !== id);
-    },
-    countAddedProduct: (state, action: PayloadAction<cartType>) => {
-      const existingIndex = state.products.find(
-        (product) => product.id === action.payload.id,
-      );
-      //console.log("id", action.payload.id);
-
-      //console.log("existingIndex", existingIndex);
-
-      if (!existingIndex) {
-        state.counter = (state.counter || 0) + 1;
-      }
     },
     countRemovedProduct: (state) => {
       state.counter = (state.counter || 0) - 1;
@@ -115,7 +82,6 @@ export const {
   deleteProduct,
   changeIconToAdded,
   removedIconToAdded,
-  countAddedProduct,
   countRemovedProduct,
   processPayment,
   clearProcessed,

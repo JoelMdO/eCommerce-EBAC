@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { StyledProducts } from "../../styles/products_styled";
-import {
-  addProduct,
-  changeIconToAdded,
-  countAddedProduct,
-} from "../../redux/slices/cart_slice";
+import { addProduct, changeIconToAdded } from "../../redux/slices/cart_slice";
 import formattedNumber from "../../utils/format_number";
 import type { AppDispatch, RootState } from "../../redux/store/store";
 import { useEffect } from "react";
@@ -43,7 +39,6 @@ const Products = () => {
                   isAdded ? "cart-product_add-active" : "cart-product_add"
                 }
                 onClick={() => {
-                  dispatch(countAddedProduct(product));
                   dispatch(addProduct(product));
                   dispatch(changeIconToAdded(product.id));
                 }}

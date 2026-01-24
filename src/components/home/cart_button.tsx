@@ -3,13 +3,12 @@ import { StyledCartButton } from "../../styles/cartButton_styled";
 import type { AppDispatch } from "../../redux/store/store";
 import { opencart } from "../../redux/slices/open_slice";
 import { HOME_CART_BUTTON } from "../../constants/home_cart_button";
+import type { RootState } from "../../redux/store/store";
 
 const ButtonCart = () => {
   //
   const dispatch = useDispatch<AppDispatch>();
-  const count = useSelector(
-    (state: { cart: { counter: number } }) => state.cart.counter,
-  );
+  const count = useSelector((state: RootState) => state.cart.counter);
   //
   return (
     <StyledCartButton>
