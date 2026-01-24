@@ -1,27 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-//import { productsList } from "../../data/products_list";
 import { StyledProducts } from "../../styles/products_styled";
 import {
   addProduct,
   changeIconToAdded,
   countAddedProduct,
 } from "../../redux/slices/cart_slice";
-import type { CartState } from "../../types/cart_type";
-import type { ProductState } from "../../types/product_type";
 import formattedNumber from "../../utils/format_number";
-import type { AppDispatch } from "../../redux/store/store";
+import type { AppDispatch, RootState } from "../../redux/store/store";
 import { useEffect } from "react";
-import { fetchProducts } from "../../redux/slices/products_slice";
+import { fetchProducts } from "../../redux/thunks/fetchProducts";
 import { HOME_PRODUCTS } from "../../constants/home_products";
+import Loader from "../home/loader";
 
 const Products = () => {
   //
   const dispatch = useDispatch<AppDispatch>();
-  const { items, status } = useSelector(
-    (state: ProductState) => state.products,
-  );
+  const { items, status } = useSelector((state: RootState) => state.products);
   const iconAdded: number[] = useSelector(
-    (state: CartState) => state.cart.iconAdded || [],
+    (state: RootState) => state.cart.iconAdded || [],
   );
   //
   useEffect(() => {
@@ -31,7 +27,7 @@ const Products = () => {
   return (
     <>
       <StyledProducts>
-        {status === "loading" && <p>{HOME_PRODUCTS.loadingText}</p>}
+        {status === "loading" && <Loader />}
         {items.map((product) => {
           const isAdded = iconAdded.includes(product.id);
           return (

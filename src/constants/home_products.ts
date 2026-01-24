@@ -1,5 +1,6 @@
 export const HOME_PRODUCTS = {
   loadingText: "Loading...",
+  loadingDots: "...",
   addSign: "+",
   addedSign: "✓",
   currencyPrefix: "$",
