@@ -1,9 +1,12 @@
 import { processPayment } from "../redux/slices/cart_slice";
 import { setAuthenticated } from "../redux/slices/signup_slice";
-import type { FormType, UserData } from "../types/form_type";
+import type { AppDispatch } from "../redux/store/store";
+import { fetchUser } from "../redux/thunks/fetchUser";
+import type { UserData } from "../types/form_type";
 export const formSubmission = (
-  data: FormType,
-  dispatchEvent: (action: ReturnType<typeof setAuthenticated>) => void,
+  data: Partial<UserData>,
+  // dispatchEvent: (action: ReturnType<typeof setAuthenticated>) => void,
+  dispatch: AppDispatch,
   setServerError: (serverError: boolean) => void,
   setLoggingIn: (loggingIn: boolean) => void,
   navigate: (path: string) => void,
@@ -16,31 +19,44 @@ export const formSubmission = (
   ///--------------------------------------------------------
   try {
     setLoggingIn(true);
-    const userData = sessionStorage.getItem("userData");
-    console.log("userData", userData);
-
-    if (userData) {
-      const parsedData: UserData = JSON.parse(userData);
-      console.log("parsedemail", parsedData.email);
-      console.log("parsedpassword", parsedData.password);
-
-      if (
-        parsedData.email === data.email &&
-        parsedData.password === data.password
-      ) {
-        dispatchEvent(setAuthenticated());
+    //const userData = sessionStorage.getItem("userData");
+    //console.log("userData", userData);
+    const user = { username: data.username, password: data.password };
+    dispatch(fetchUser(user))
+      .unwrap()
+      .then(() => {
+        dispatch(setAuthenticated());
         setTimeout(() => {
           setLoggingIn(false);
           navigate("/home");
         }, 1000);
-      } else {
+      })
+      .catch(() => {
         setServerError(true);
         setLoggingIn(false);
-      }
-    } else {
-      setServerError(true);
-      setLoggingIn(false);
-    }
+      });
+    // if (userData) {
+    //   const parsedData: UserData = JSON.parse(userData);
+    //   console.log("parsedemail", parsedData.email);
+    //   console.log("parsedpassword", parsedData.password);
+
+    // if (
+    //   parsedData.email === data.email &&
+    //   parsedData.password === data.password
+    // ) {
+    //   dispatchEvent(setAuthenticated());
+    //   setTimeout(() => {
+    //     setLoggingIn(false);
+    //     navigate("/home");
+    //   }, 1000);
+    //   } else {
+    //     setServerError(true);
+    //     setLoggingIn(false);
+    //   }
+    // } else {
+    //   setServerError(true);
+    //   setLoggingIn(false);
+    // }
   } catch {
     setServerError(true);
     setLoggingIn(false);

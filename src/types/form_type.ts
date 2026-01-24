@@ -1,8 +1,3 @@
-export interface FormType {
-  email: string;
-  password: string;
-}
-
 export interface UserData {
   username: string;
   email: string;

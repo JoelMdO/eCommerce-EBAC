@@ -1,8 +1,8 @@
 export const LOGIN_FORM = {
   formAria: "Formulario de inicio de sesión",
-  labelEmail: "Correo",
-  placeholderEmail: "Correo",
-  emailError: "Email incorrecto",
+  labelUserName: "Usuario",
+  placeholderUserName: "Usuario",
+  userNameError: "Usuario incorrecto",
   labelPassword: "Contraseña",
   placeholderPassword: "Contraseña",
   passwordMinLength: "Contraseña demasiado corta",

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import type { FormType } from "../../types/form_type";
+import type { UserData } from "../../types/form_type";
 import { formSubmission } from "../../utils/form_submission";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -12,10 +12,10 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormType>();
+  } = useForm<UserData>();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onsubmit = (data: FormType) =>
+  const onsubmit = (data: UserData) =>
     formSubmission(data, dispatch, setServerError, setLoggingIn, navigate);
   const [serverError, setServerError] = useState<boolean>(false);
   const [loggingIn, setLoggingIn] = useState<boolean>(false);
@@ -28,22 +28,21 @@ const LoginForm = () => {
         onSubmit={handleSubmit(onsubmit)}
         onFocus={() => setServerError(false)}
       >
-        <label htmlFor="femail" lang="es">
-          {LOGIN_FORM.labelEmail}
+        <label htmlFor="username" lang="es">
+          {LOGIN_FORM.labelUserName}
         </label>
         <input
-          id="femail"
+          id="username"
           type="text"
-          placeholder={LOGIN_FORM.placeholderEmail}
-          aria-placeholder={LOGIN_FORM.placeholderEmail}
-          {...register("email", {
+          placeholder={LOGIN_FORM.placeholderUserName}
+          aria-placeholder={LOGIN_FORM.placeholderUserName}
+          {...register("username", {
             required: true,
-            pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
           })}
         />
-        {errors.email && (
+        {errors.username && (
           <p className="login-form-error" lang="es">
-            {LOGIN_FORM.emailError}
+            {LOGIN_FORM.userNameError}
           </p>
         )}
         <label htmlFor="fpassword" lang="es">
