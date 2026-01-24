@@ -6,7 +6,7 @@ export interface cartType {
   tag?: string;
 }
 
-export interface ProductState {
+export interface CartState {
   cart: {
     iconAdded: number[];
     products: cartType[];

@@ -21,15 +21,38 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action: PayloadAction<cartType>) => {
       const incomingProduct = action.payload;
-      const existingIndex = state.products.find(
-        (product) => product.id === action.payload.id,
-      );
-      if (!existingIndex) {
+
+      // Check if product already exists in the local storage
+      // If not save it, otherwise do nothing
+      const products = localStorage.getItem("cartProducts");
+      if (!products) {
+        localStorage.setItem(
+          "cartProducts",
+          JSON.stringify([...state.products, incomingProduct]),
+        );
+        state.products.push(incomingProduct);
+      }
+      if (products) {
+        const savedProducts = JSON.parse(products);
+        const existingIndex = savedProducts.find(
+          (product: cartType) => product.id === incomingProduct.id,
+        );
+
+        if (!existingIndex) {
+          localStorage.setItem(
+            "cartProducts",
+            JSON.stringify([...savedProducts, incomingProduct]),
+          );
+          state.products.push(incomingProduct);
+        }
+        // const existingIndex = state.products.find(
+        //   (product) => product.id === action.payload.id,
+        // );
+        // if (!existingIndex) {
         // replace existing product data
         //console.log("product not found, adding");
-
-        state.products.push({ ...incomingProduct });
-      } else {
+        // state.products.push({ ...incomingProduct });
+        //} else {
         //console.log("product found");
       }
     },
@@ -45,6 +68,7 @@ export const cartSlice = createSlice({
 
       if (productIndex !== -1) {
         state.products.splice(productIndex, 1);
+        localStorage.setItem("cartProducts", JSON.stringify(state.products));
       }
     },
     changeIconToAdded: (state, action: PayloadAction<number>) => {
