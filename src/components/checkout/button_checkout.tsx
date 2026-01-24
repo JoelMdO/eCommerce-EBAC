@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { CHECKOUT_BUTTON } from "../../constants/checkout_button_checkout";
 
 const ButtonCheckout = () => {
   //
@@ -17,11 +18,11 @@ const ButtonCheckout = () => {
             dialog.showModal();
           }}
         >
-          Pagar
+          {CHECKOUT_BUTTON.payText}
         </button>
         <Link to="/home">
           <button className="cart-checkout-nav-button" type="button" lang="es">
-            Cancelar
+            {CHECKOUT_BUTTON.cancelText}
           </button>
         </Link>
       </div>

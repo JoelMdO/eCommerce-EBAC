@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
-import type { ProductState } from "../../types/cart_type";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import totalCalc from "../../utils/total_calc";
 import ButtonCheckout from "../checkout/button_checkout";
+import { CHECKOUT_TOTAL } from "../../constants/checkout_total_products";
+import type { RootState } from "../../redux/store/store";
 
 const TotalProductsCheckout = () => {
   //
-  const products = useSelector((state: ProductState) => state.cart.products);
+  const products = useSelector((state: RootState) => state.cart.products);
   const [price, setPrice] = useState(totalCalc({ products }));
   //
   useEffect(() => {
@@ -21,7 +22,11 @@ const TotalProductsCheckout = () => {
   return (
     <>
       <div className="checkout-product__total">
-        {products.length === 0 ? null : <p>Total: $ {price}</p>}
+        {products.length === 0 ? null : (
+          <p>
+            {CHECKOUT_TOTAL.totalLabel} {"$"} {price}
+          </p>
+        )}
         {products.length === 0 ? (
           <Link to="/home">
             <button
@@ -29,7 +34,7 @@ const TotalProductsCheckout = () => {
               type="button"
               lang="es"
             >
-              Ir a la tienda
+              {CHECKOUT_TOTAL.goToStore}
             </button>
           </Link>
         ) : (

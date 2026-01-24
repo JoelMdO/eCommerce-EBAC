@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import type { ProductState } from "../../types/cart_type";
 import { Link } from "react-router";
 import { clearProcessed } from "../../redux/slices/cart_slice";
+import { CHECKOUT_HEADER } from "../../constants/checkout_header_checkout";
+import type { RootState } from "../../redux/store/store";
 
 const HeaderCheckout = () => {
   //
-  const products = useSelector((state: ProductState) => state.cart.products);
-  const purchaseDone = useSelector(
-    (state: ProductState) => state.cart.processed,
-  );
+  const products = useSelector((state: RootState) => state.cart.products);
+  const purchaseDone = useSelector((state: RootState) => state.cart.processed);
   const dispatch = useDispatch();
   //
   return (
@@ -16,7 +15,7 @@ const HeaderCheckout = () => {
       <img className="checkout-logo" src="src/assets/logo.png" alt="Logo" />
       {purchaseDone ? (
         <>
-          <h1>Gracias por su compra!</h1>
+          <h1>{CHECKOUT_HEADER.thankYou}</h1>
           <Link to="/home">
             <button
               className="cart-checkout-nav-button"
@@ -26,16 +25,16 @@ const HeaderCheckout = () => {
                 dispatch(clearProcessed());
               }}
             >
-              Volver a la tienda
+              {CHECKOUT_HEADER.backToStore}
             </button>
           </Link>
         </>
       ) : (
         <>
           {products.length === 0 && !purchaseDone ? (
-            <h1 lang="es">Ops! Creo que olvidaste agregar algún producto.</h1>
+            <h1 lang="es">{CHECKOUT_HEADER.forgotProduct}</h1>
           ) : (
-            <h1 lang="es">Excelente selección</h1>
+            <h1 lang="es">{CHECKOUT_HEADER.excellent}</h1>
           )}
         </>
       )}

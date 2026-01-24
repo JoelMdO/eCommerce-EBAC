@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StyledCartButton } from "../../styles/cartButton_styled";
 import type { AppDispatch } from "../../redux/store/store";
 import { opencart } from "../../redux/slices/open_slice";
+import { HOME_CART_BUTTON } from "../../constants/home_cart_button";
 
 const ButtonCart = () => {
   //
@@ -20,7 +21,7 @@ const ButtonCart = () => {
         <img
           className="header-icon__carrito--img"
           src="src/assets/cart.png"
-          alt="Icono de carrito"
+          alt={HOME_CART_BUTTON.cartAlt}
         />
         <span id="cartCount" className="cart-count">
           {count}

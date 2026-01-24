@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux";
 import ShopItem from "../shop_item";
-import type { ProductState, cartType } from "../../types/cart_type";
+import type { cartType } from "../../types/cart_type";
 import CartCheckoutButton from "./cart_checkout_button";
+import { CART_BODY } from "../../constants/cart_body";
+import type { RootState } from "../../redux/store/store";
 
 const CartBody = () => {
   //
-  const products = useSelector((state: ProductState) => state.cart.products);
+  const products = useSelector((state: RootState) => state.cart.products);
 
   return (
     <>
       {products.length === 0 && (
         <p className="menu-close_noproducts-text" lang="es">
-          Animate a comprar, aun no hay productos en el carrito
+          {CART_BODY.emptyText}
         </p>
       )}
       {products.map((product: cartType) => (
