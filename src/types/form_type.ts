@@ -4,9 +4,10 @@ export interface FormType {
 }
 
 export interface UserData {
-  name: string;
+  username: string;
   email: string;
   password: string;
+  password2: string;
   loggedIn: boolean;
   card: string;
   card_expiry: string;

@@ -9,6 +9,7 @@ export const REGISTER_FORM = {
   placeholderEmail: "Correo",
   emailError: "Correo incorrecto",
   placeholderPassword: "Contraseña",
+  placeholderPassword2: "Confirma tu Contraseña",
   passwordError: "Contraseña incorrecta",
   creatingText: "Creando registro...",
   submitText: "Registrate",

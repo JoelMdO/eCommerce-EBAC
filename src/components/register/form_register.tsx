@@ -4,6 +4,8 @@ import type { UserData } from "../../types/form_type";
 import { useState } from "react";
 import userRegister from "../../utils/user_register";
 import { REGISTER_FORM } from "../../constants/register_form_register";
+import type { RootState } from "../../redux/store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const FormRegister = ({
   setRegisterSuccess,
@@ -16,8 +18,12 @@ const FormRegister = ({
     handleSubmit,
     formState: { errors },
   } = useForm<UserData>();
+  //
   const [serverError, setServerError] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { status, error } = useSelector((state: RootState) => state.signup);
+  const dispatch = useDispatch();
+  //
   const onsubmit = (data: UserData) =>
     userRegister(
       data,
@@ -25,6 +31,8 @@ const FormRegister = ({
       setRegisteringIn,
       navigate,
       setRegisterSuccess,
+      status,
+      dispatch,
     );
   const [registeringIn, setRegisteringIn] = useState<boolean>(false);
   //
@@ -33,7 +41,7 @@ const FormRegister = ({
       <h2 lang="es">{REGISTER_FORM.heading}</h2>
       <img
         className="register-logo"
-        src="../../assets/adidas.png"
+        src="src/assets/adidas.png"
         alt={REGISTER_FORM.logoAlt}
       />
       <form
@@ -49,9 +57,9 @@ const FormRegister = ({
           type="text"
           placeholder={REGISTER_FORM.placeholderName}
           aria-placeholder={REGISTER_FORM.placeholderName}
-          {...register("name", { required: true, maxLength: 80 })}
+          {...register("username", { required: true, maxLength: 80 })}
         />
-        {errors.name && (
+        {errors.username && (
           <p className="register-form-error" lang="es">
             {REGISTER_FORM.nameError}
           </p>
@@ -82,6 +90,17 @@ const FormRegister = ({
             {REGISTER_FORM.passwordError}
           </p>
         )}
+        <input
+          type="password"
+          placeholder={REGISTER_FORM.placeholderPassword2}
+          aria-placeholder={REGISTER_FORM.placeholderPassword2}
+          {...register("password2", { required: true })}
+        />
+        {errors.password2 && (
+          <p className="register-form-error" lang="es">
+            {REGISTER_FORM.passwordError}
+          </p>
+        )}
         <button type="submit">
           {registeringIn
             ? REGISTER_FORM.creatingText
@@ -93,7 +112,10 @@ const FormRegister = ({
       </Link>
       {serverError ? (
         <div className="register_error_text">
-          <p lang="es">{REGISTER_FORM.serverError}</p>
+          <p lang="es">
+            {REGISTER_FORM.serverError}
+            {error}
+          </p>
         </div>
       ) : null}
     </>

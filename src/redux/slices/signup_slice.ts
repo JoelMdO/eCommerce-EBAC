@@ -1,12 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { UserData } from "../../types/form_type";
+import { fetchUser } from "../thunks/fetchUser";
+import { createUser } from "../thunks/createUser";
 
-interface SignUpState {
+export interface SignUpState {
+  status?: "loggedout" | "loading" | "loggedin" | "failed" | "registered";
   authenticated: boolean;
+  error: string | null;
+  currentUser: {
+    email: string;
+    password: string;
+    name: string;
+  };
 }
 
-const initialState: SignUpState = {
+export const initialState: SignUpState = {
   authenticated: false,
+  status: "loggedout",
+  error: null,
+  currentUser: {
+    email: "",
+    password: "",
+    name: "",
+  },
 };
 
 export const signUpSlice = createSlice({
@@ -15,14 +30,36 @@ export const signUpSlice = createSlice({
   reducers: {
     setAuthenticated: (state) => {
       state.authenticated = true;
-      //Upadate sessionStorage
-      const userData = sessionStorage.getItem("userData");
-      if (userData) {
-        const parsedData: UserData = JSON.parse(userData);
-        parsedData.loggedIn = true;
-        sessionStorage.setItem("userData", JSON.stringify(parsedData));
-      }
     },
+    logOutUser: (state) => {
+      state.authenticated = false;
+      state.currentUser = initialState.currentUser;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.status = "loggedin";
+        state.currentUser = action.payload;
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to fetch user";
+      })
+      .addCase(createUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(createUser.fulfilled, (state, action) => {
+        state.status = "registered";
+        state.currentUser = action.payload;
+      })
+      .addCase(createUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to create user";
+      });
   },
 });
 
