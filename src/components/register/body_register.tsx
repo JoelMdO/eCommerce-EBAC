@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormRegister from "./form_register";
+import { REGISTER_BODY } from "../../constants/register_body_register";
 
 const BodyRegister = () => {
   //
@@ -10,8 +11,8 @@ const BodyRegister = () => {
     <>
       {registerSuccess ? (
         <div className="register-success_text">
-          <span>🛍</span>
-          <p>Registro exitoso, serás redirigido al login</p>
+          <span>{REGISTER_BODY.successEmoji}</span>
+          <p>{REGISTER_BODY.successText}</p>
         </div>
       ) : (
         <>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import type { UserData } from "../../types/form_type";
 import { useState } from "react";
 import userRegister from "../../utils/user_register";
+import { REGISTER_FORM } from "../../constants/register_form_register";
 
 const FormRegister = ({
   setRegisterSuccess,
@@ -29,67 +30,70 @@ const FormRegister = ({
   //
   return (
     <>
-      <h2 lang="es">Registra tu cuenta</h2>
-      <img className="register-logo" src="../../assets/adidas.png" alt="Logo" />
+      <h2 lang="es">{REGISTER_FORM.heading}</h2>
+      <img
+        className="register-logo"
+        src="../../assets/adidas.png"
+        alt={REGISTER_FORM.logoAlt}
+      />
       <form
         className="register-form"
-        aria-label="Formulario de registro de usuarios"
+        aria-label={REGISTER_FORM.formAria}
         onSubmit={handleSubmit(onsubmit)}
       >
         <label lang="es" htmlFor="name">
-          Nombre
+          {REGISTER_FORM.labelName}
         </label>
         <input
           id="name"
           type="text"
-          placeholder="Nombre"
-          aria-placeholder="Nombre"
+          placeholder={REGISTER_FORM.placeholderName}
+          aria-placeholder={REGISTER_FORM.placeholderName}
           {...register("name", { required: true, maxLength: 80 })}
         />
         {errors.name && (
           <p className="register-form-error" lang="es">
-            Nombre incorrecto
+            {REGISTER_FORM.nameError}
           </p>
         )}
         <label lang="es" htmlFor="email">
-          Correo
+          {REGISTER_FORM.labelEmail}
         </label>
         <input
           id="email"
           type="text"
-          placeholder="Correo"
-          aria-placeholder="Correo"
+          placeholder={REGISTER_FORM.placeholderEmail}
+          aria-placeholder={REGISTER_FORM.placeholderEmail}
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         />
         {errors.email && (
           <p className="register-form-error" lang="es">
-            Correo incorrecto
+            {REGISTER_FORM.emailError}
           </p>
         )}
         <input
           type="password"
-          placeholder="Contraseña"
-          aria-placeholder="Contraseña"
+          placeholder={REGISTER_FORM.placeholderPassword}
+          aria-placeholder={REGISTER_FORM.placeholderPassword}
           {...register("password", { required: true })}
         />
         {errors.password && (
           <p className="register-form-error" lang="es">
-            Contraseña incorrecta
+            {REGISTER_FORM.passwordError}
           </p>
         )}
         <button type="submit">
-          {registeringIn ? "Creando registro..." : "Registrate"}
+          {registeringIn
+            ? REGISTER_FORM.creatingText
+            : REGISTER_FORM.submitText}
         </button>
       </form>
       <Link className="register-nav_link" to="/" lang="es" role="navigation">
-        Cancelar
+        {REGISTER_FORM.cancelText}
       </Link>
       {serverError ? (
         <div className="register_error_text">
-          <p lang="es">
-            Error en registro, por favor intente de nuevo o contacte al
-            administrador
-          </p>
+          <p lang="es">{REGISTER_FORM.serverError}</p>
         </div>
       ) : null}
     </>

@@ -7,6 +7,7 @@ import {
   removedIconToAdded,
 } from "../redux/slices/cart_slice";
 import formattedNumber from "../utils/format_number";
+import { SHOP_ITEM } from "../constants/shop_item";
 
 const ShopItem = ({ name, image, price, id, tag }: cartType) => {
   //
@@ -19,7 +20,9 @@ const ShopItem = ({ name, image, price, id, tag }: cartType) => {
         <img src={image} alt={name} />
         <div className="shop-item__text-container">
           <p lang="es">{name}</p>
-          <p lang="es">$ {`${formattedNumber(Number(price))}`}</p>
+          <p lang="es">
+            {SHOP_ITEM.currencyPrefix} {`${formattedNumber(Number(price))}`}
+          </p>
         </div>
         {tag === "checkout" ? null : (
           <button
@@ -34,7 +37,7 @@ const ShopItem = ({ name, image, price, id, tag }: cartType) => {
             <img
               className="delete-icon"
               src="src/assets/delete-gray-color.png"
-              alt="Icono Quitar"
+              alt={SHOP_ITEM.deleteAlt}
             />
           </button>
         )}

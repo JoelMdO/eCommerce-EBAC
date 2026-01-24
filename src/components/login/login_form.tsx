@@ -4,6 +4,7 @@ import { formSubmission } from "../../utils/form_submission";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router";
+import { LOGIN_FORM } from "../../constants/login_login_form";
 
 const LoginForm = () => {
   //
@@ -23,18 +24,18 @@ const LoginForm = () => {
     <div className="login-container">
       <form
         className="login-form"
-        aria-label="Formulario de inicio de sesión"
+        aria-label={LOGIN_FORM.formAria}
         onSubmit={handleSubmit(onsubmit)}
         onFocus={() => setServerError(false)}
       >
         <label htmlFor="femail" lang="es">
-          Correo
+          {LOGIN_FORM.labelEmail}
         </label>
         <input
           id="femail"
           type="text"
-          placeholder="Correo"
-          aria-placeholder="Correo"
+          placeholder={LOGIN_FORM.placeholderEmail}
+          aria-placeholder={LOGIN_FORM.placeholderEmail}
           {...register("email", {
             required: true,
             pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -42,42 +43,39 @@ const LoginForm = () => {
         />
         {errors.email && (
           <p className="login-form-error" lang="es">
-            Email incorrecto
+            {LOGIN_FORM.emailError}
           </p>
         )}
         <label htmlFor="fpassword" lang="es">
-          Contraseña
+          {LOGIN_FORM.labelPassword}
         </label>
         <input
           id="fpassword"
           type="password"
-          placeholder="Contraseña"
-          aria-placeholder="Contraseña"
+          placeholder={LOGIN_FORM.placeholderPassword}
+          aria-placeholder={LOGIN_FORM.placeholderPassword}
           {...register("password", { required: true, minLength: 6 })}
         />
         {errors.password && (
           <p className="login-form-error" lang="es">
             {errors.password.type === "minLength"
-              ? "Contraseña demasiado corta"
-              : "Contraseña incorrecta"}
+              ? LOGIN_FORM.passwordMinLength
+              : LOGIN_FORM.passwordIncorrect}
           </p>
         )}
         <button type="submit" lang="es">
-          {loggingIn ? "Iniciando sesión..." : "Iniciar sesión"}
+          {loggingIn ? LOGIN_FORM.loggingInText : LOGIN_FORM.submitText}
         </button>
       </form>
       {serverError ? (
         <div className="login-register_error_text">
-          <p lang="es">
-            Error de acceso, verifique sus credenciales o contacte al
-            administrador
-          </p>
+          <p lang="es">{LOGIN_FORM.serverError}</p>
         </div>
       ) : (
         <div className="login-register_text">
-          <p lang="es">¿Sin cuenta, aún?</p>
+          <p lang="es">{LOGIN_FORM.noAccountText}</p>
           <Link to="/register" lang="es">
-            Regístrate
+            {LOGIN_FORM.registerLinkText}
           </Link>
         </div>
       )}
