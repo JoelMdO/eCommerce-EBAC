@@ -19,15 +19,11 @@ const userRegister = (
 
   try {
     setRegisteringIn(true);
-    // const user: UserData = data;
     dispatch(createUser(data));
-    // sessionStorage.setItem("userData", JSON.stringify(data));
 
-    // setTimeout(() => {
     if (status === "registered") {
       setRegisteringIn(false);
       setRegisterSuccess(true);
-      //}, 1000);
 
       setTimeout(() => {
         navigate("/");

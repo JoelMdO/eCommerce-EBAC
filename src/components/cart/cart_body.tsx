@@ -4,24 +4,10 @@ import type { cartType } from "../../types/cart_type";
 import CartCheckoutButton from "./cart_checkout_button";
 import { CART_BODY } from "../../constants/cart_body";
 import type { RootState } from "../../redux/store/store";
-//import { useEffect } from "react";
-//import { addProduct } from "../../redux/slices/cart_slice";
 
 const CartBody = () => {
   //
   const products = useSelector((state: RootState) => state.cart.products);
-  //const dispatch = useDispatch();
-  // useEffect(() => {
-  //   console.log("products length", products.length);
-  //   if (products.length === 0) {
-  //     const storedProducts = localStorage.getItem("cartProducts");
-  //     console.log("stored prodc", storedProducts);
-
-  //     if (storedProducts) {
-  //       dispatch(addProduct(JSON.parse(storedProducts)));
-  //     }
-  //   }
-  // }, [products.length, dispatch]);
 
   return (
     <>

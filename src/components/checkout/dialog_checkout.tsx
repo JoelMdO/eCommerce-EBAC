@@ -13,15 +13,7 @@ const DialogCheckout = () => {
   return (
     <>
       <dialog className="shipment-data_dialog" aria-modal="true" role="dialog">
-        <ShipmentDataForm
-          dispatch={dispatch}
-          // closeDialog={() => {
-          //   const dialog = document.querySelector(
-          //     ".shipment-data_dialog",
-          //   ) as HTMLDialogElement;
-          //   dialog.close();
-          // }}
-        />
+        <ShipmentDataForm dispatch={dispatch} />
         {errors && (
           <p className="shipment-data_dialog-error">
             There was an error {errorsText} processing your order. Please try

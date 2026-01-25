@@ -68,16 +68,6 @@ export const cartSlice = createSlice({
       state.iconAdded = [];
       state.counter = 0;
     },
-    // processPayment: (state) => {
-    //   // mark processed and clear cart contents (use Immer-style mutations)
-    //   state.processed = true;
-    //   state.products = [];
-    //   state.iconAdded = [];
-    //   state.counter = 0;
-    // },
-    // clearProcessed: (state) => {
-    //   state.processed = false;
-    // },
   },
 });
 
@@ -89,8 +79,6 @@ export const {
   removedIconToAdded,
   countRemovedProduct,
   clearCartAfterOrder,
-  // processPayment,
-  //clearProcessed,
 } = cartSlice.actions;
 
 // Export reducer

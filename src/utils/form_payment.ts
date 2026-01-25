@@ -1,4 +1,3 @@
-// import { processPayment } from "../redux/slices/cart_slice";
 import type { AppDispatch } from "../redux/store/store";
 import { setOrders } from "../redux/thunks/setOrder";
 import type { ShipmentDataType } from "../types/form_type";
@@ -13,8 +12,6 @@ export const formPayment = async (
   // For dev purposes no store of this data, in case the product goes to production
   // it needs to be handle to a proper DB.
   ///--------------------------------------------------------
-  // dispatch(processPayment());
-  // token helpers using sessionStorage
   const user_name = JSON.parse(localStorage.getItem("username")!);
   const pre_total = JSON.parse(localStorage.getItem("cartTotal")!).replace(
     /,/g,

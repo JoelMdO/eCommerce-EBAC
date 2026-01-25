@@ -9,7 +9,6 @@ const HeaderCheckout = () => {
   const purchaseDone = useSelector(
     (state: RootState) => state.order.status === "succeeded",
   );
-  // const dispatch = useDispatch();
   //
   return (
     <>
@@ -22,9 +21,6 @@ const HeaderCheckout = () => {
               className="cart-checkout-nav-button"
               type="button"
               lang="es"
-              // onClick={() => {
-              //   dispatch(clearProcessed());
-              // }}
             >
               {CHECKOUT_HEADER.backToStore}
             </button>

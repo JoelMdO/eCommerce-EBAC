@@ -5,13 +5,7 @@ import { formPayment } from "../../utils/form_payment";
 import type { ShipmentDataType } from "../../types/form_type";
 import { CHECKOUT_SHIPMENT } from "../../constants/checkout_shipment_dataForm";
 
-const ShipmentDataForm = ({
-  dispatch,
-  // closeDialog,
-}: {
-  dispatch: AppDispatch;
-  // closeDialog: () => void;
-}) => {
+const ShipmentDataForm = ({ dispatch }: { dispatch: AppDispatch }) => {
   //
   const {
     register,

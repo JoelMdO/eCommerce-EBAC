@@ -1,7 +1,5 @@
-// token helpers using sessionStorage
 import api from "../api/api";
 
-// fetchWithRefresh (same logic as before) — uses sessionStorage for refresh token
 const getRefreshToken = async (): Promise<string> => {
   const storedRaw = localStorage.getItem("token");
   if (!storedRaw) throw new Error("No token stored");
