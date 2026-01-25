@@ -1,7 +1,7 @@
-import type { ShopListType } from "../types/shopList_type";
+import type { cartType } from "../types/cart_type";
 import formattedNumber from "./format_number";
 
-const totalCalc = ({ products }: { products: ShopListType[] }) => {
+const totalCalc = ({ products }: { products: cartType[] }) => {
   let price = 0;
   if (products.length > 0) {
     products.forEach((product) => {

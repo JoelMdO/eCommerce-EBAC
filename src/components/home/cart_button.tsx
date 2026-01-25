@@ -1,0 +1,33 @@
+import { useDispatch, useSelector } from "react-redux";
+import { StyledCartButton } from "../../styles/cartButton_styled";
+import type { AppDispatch } from "../../redux/store/store";
+import { opencart } from "../../redux/slices/open_slice";
+import { HOME_CART_BUTTON } from "../../constants/home_cart_button";
+import type { RootState } from "../../redux/store/store";
+
+const ButtonCart = () => {
+  //
+  const dispatch = useDispatch<AppDispatch>();
+  const count = useSelector((state: RootState) => state.cart.counter);
+  //
+  return (
+    <StyledCartButton>
+      <button
+        type="button"
+        className="header-icon__carrito-button"
+        onClick={() => dispatch(opencart())}
+      >
+        <img
+          className="header-icon__carrito--img"
+          src="src/assets/cart.png"
+          alt={HOME_CART_BUTTON.cartAlt}
+        />
+        <span id="cartCount" className="cart-count">
+          {count}
+        </span>
+      </button>
+    </StyledCartButton>
+  );
+};
+
+export default ButtonCart;

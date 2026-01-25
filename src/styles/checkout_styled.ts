@@ -15,12 +15,12 @@ export const StyledCheckout = styled.section`
     var(--button-addcolor)
   );
 
-  .shoplist-checkout-nav-button {
+  .cart-checkout-nav-button {
     background: var(--blue-color);
     color: var(--white-color);
   }
 
-  .shoplist-checkout-button {
+  .cart-checkout-button {
     background: var(--button-addcolor-active);
     color: var(--black-color);
   }
@@ -49,7 +49,7 @@ export const StyledCheckout = styled.section`
     height: 110px;
   }
 
-  .shoplist-checkout-button__container {
+  .cart-checkout-button__container {
     display: flex;
     flex-direction: column;
     align-items: center;
