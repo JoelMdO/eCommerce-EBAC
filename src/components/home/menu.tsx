@@ -4,6 +4,7 @@ import { StyledMenu } from "../../styles/menu_styled";
 import { closeMenu } from "../../redux/slices/open_slice";
 import { Link } from "react-router";
 import { HOME_MENU } from "../../constants/home_menu";
+import { logoutUser } from "../../redux/thunks/logoutUser";
 
 const Menu = () => {
   //
@@ -24,7 +25,7 @@ const Menu = () => {
             {HOME_MENU.closeText}
           </span>
         </button>
-        <Link to="/" role="navigation">
+        <Link to="/" role="navigation" onClick={() => dispatch(logoutUser())}>
           <span className="menu-logout" lang="es" aria-label={"Cerrar sesión"}>
             {HOME_MENU.logoutText}
           </span>

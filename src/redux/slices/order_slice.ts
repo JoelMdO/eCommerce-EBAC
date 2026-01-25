@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../api/api";
+import { createSlice } from "@reduxjs/toolkit";
 import type { OrderType } from "../../types/order_type";
+import { setOrders } from "../thunks/setOrder";
 
 interface OrderState {
   order: OrderType[];
@@ -14,35 +14,28 @@ const initialState: OrderState = {
   error: null,
 };
 
-const fetchOrders = createAsyncThunk("orders/fetchOrders", async () => {
-  const response = await api.get("/orders/ ");
-  const data = await response.data;
-  return data;
-});
-
 export const orderSlice = createSlice({
   name: "orderState",
   initialState,
   reducers: {
-    setOrders: (state, action) => {
+    loadOrders: (state, action) => {
       state.order = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrders.pending, (state) => {
+      .addCase(setOrders.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchOrders.fulfilled, (state, action) => {
+      .addCase(setOrders.fulfilled, (state) => {
         state.status = "succeeded";
-        state.order = action.payload;
       })
-      .addCase(fetchOrders.rejected, (state, action) => {
+      .addCase(setOrders.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Failed to fetch orders";
       });
   },
 });
 
-export const { setOrders } = orderSlice.actions;
+export const { loadOrders } = orderSlice.actions;
 export default orderSlice.reducer;

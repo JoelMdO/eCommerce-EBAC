@@ -1,14 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router";
-import { clearProcessed } from "../../redux/slices/cart_slice";
 import { CHECKOUT_HEADER } from "../../constants/checkout_header_checkout";
 import type { RootState } from "../../redux/store/store";
 
 const HeaderCheckout = () => {
   //
   const products = useSelector((state: RootState) => state.cart.products);
-  const purchaseDone = useSelector((state: RootState) => state.cart.processed);
-  const dispatch = useDispatch();
+  const purchaseDone = useSelector(
+    (state: RootState) => state.order.status === "succeeded",
+  );
+  // const dispatch = useDispatch();
   //
   return (
     <>
@@ -21,9 +22,9 @@ const HeaderCheckout = () => {
               className="cart-checkout-nav-button"
               type="button"
               lang="es"
-              onClick={() => {
-                dispatch(clearProcessed());
-              }}
+              // onClick={() => {
+              //   dispatch(clearProcessed());
+              // }}
             >
               {CHECKOUT_HEADER.backToStore}
             </button>

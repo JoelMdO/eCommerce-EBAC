@@ -10,7 +10,8 @@ export const createUser = createAsyncThunk(
     console.log("data", data);
 
     if (data) {
-      localStorage.setItem("token", JSON.stringify(data));
+      localStorage.setItem("token", JSON.stringify(data.token));
+      localStorage.setItem("username", JSON.stringify(data.username));
     }
     return data;
   },

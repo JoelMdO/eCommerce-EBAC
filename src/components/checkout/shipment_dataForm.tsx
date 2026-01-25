@@ -1,16 +1,16 @@
 import { CreditCard, House, Phone, UserRound } from "lucide-react";
 import type { AppDispatch } from "../../redux/store/store";
 import { useForm } from "react-hook-form";
-import { formPayment } from "../../utils/form_submission";
+import { formPayment } from "../../utils/form_payment";
 import type { ShipmentDataType } from "../../types/form_type";
 import { CHECKOUT_SHIPMENT } from "../../constants/checkout_shipment_dataForm";
 
 const ShipmentDataForm = ({
   dispatch,
-  closeDialog,
+  // closeDialog,
 }: {
   dispatch: AppDispatch;
-  closeDialog: () => void;
+  // closeDialog: () => void;
 }) => {
   //
   const {
@@ -18,7 +18,7 @@ const ShipmentDataForm = ({
     handleSubmit,
     formState: { errors },
   } = useForm<ShipmentDataType>();
-  const onsubmit = () => formPayment(dispatch, closeDialog);
+  const onsubmit = (data: ShipmentDataType) => formPayment(dispatch, data);
   //
   return (
     <>

@@ -1,7 +1,10 @@
 import type { cartType } from "./cart_type";
 
 export interface OrderType {
-  user_id: number;
-  cart: cartType;
-  total: string;
+  order: {
+    user_name: string;
+    cart: cartType;
+    total: number;
+  };
+  token: string;
 }

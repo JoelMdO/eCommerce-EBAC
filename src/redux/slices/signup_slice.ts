@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUser } from "../thunks/fetchUser";
 import { createUser } from "../thunks/createUser";
+import { logoutUser } from "../thunks/logoutUser";
 
 export interface SignUpState {
   status?: "loggedout" | "loading" | "loggedin" | "failed" | "registered";
@@ -31,10 +32,6 @@ export const signUpSlice = createSlice({
     setAuthenticated: (state) => {
       state.authenticated = true;
     },
-    logOutUser: (state) => {
-      state.authenticated = false;
-      state.currentUser = initialState.currentUser;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -59,6 +56,16 @@ export const signUpSlice = createSlice({
       .addCase(createUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Failed to create user";
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.status = "loggedout";
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to logout user";
       });
   },
 });

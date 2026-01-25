@@ -12,8 +12,10 @@ const TotalProductsCheckout = () => {
   const [price, setPrice] = useState(totalCalc({ products }));
   //
   useEffect(() => {
+    const price = totalCalc({ products });
     const setTotalPrice = () => {
-      setPrice(totalCalc({ products }));
+      setPrice(price);
+      localStorage.setItem("cartTotal", JSON.stringify(price));
     };
     setTotalPrice();
   }, [products]);
